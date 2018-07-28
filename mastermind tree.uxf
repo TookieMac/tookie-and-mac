@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>657</x>
+      <y>252</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>Main
+--
+&lt;&lt;Variables declared&gt;&gt;
+--
+&lt;&lt;Variables initialised&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+--
+&lt;&lt;Description&gt;&gt;
+main launch class for application</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
