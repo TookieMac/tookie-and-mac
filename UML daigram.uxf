@@ -1,24 +1,335 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>9</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
-      <y>252</y>
-      <w>189</w>
-      <h>171</h>
+      <x>266</x>
+      <y>77</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
-    <panel_attributes>Main
+    <panel_attributes>Library
 --
 &lt;&lt;Variables declared&gt;&gt;
+
 --
 &lt;&lt;Variables initialised&gt;&gt;
+
 --
 &lt;&lt;Methods&gt;&gt;
+
 --
 &lt;&lt;Description&gt;&gt;
-main launch class for application</panel_attributes>
+represents a library</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>427</x>
+      <y>77</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Shelf
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>245</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Series
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>245</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>SoloEntry
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>595</x>
+      <y>77</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>ShelvedItem
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>BookSeries
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>FilmSeries
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>266</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>EpisodicSeries
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>266</x>
+      <y>567</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Season
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Book
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>889</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Film
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>266</x>
+      <y>721</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Episode
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>329</x>
+      <y>371</y>
+      <w>175</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;30.0;230.0;30.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>371</y>
+      <w>182</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>240.0;60.0;240.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>371</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>203</y>
+      <w>203</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;30.0;270.0;30.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>203</y>
+      <w>161</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>210.0;60.0;210.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
