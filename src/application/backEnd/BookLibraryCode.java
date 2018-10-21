@@ -39,49 +39,49 @@ public class BookLibraryCode extends LibraryCode{
 				BufferedReader readBook = new BufferedReader(new FileReader(book));
 				Book newBook = new Book();
 				try {
-				newBook.setTitle(readBook.readLine());
-				newBook.setAuthor(readBook.readLine());
-				newBook.setSynopsis(readBook.readLine());
-				newBook.setPages(Integer.parseInt(readBook.readLine()));
-				newBook.setChapters(Integer.parseInt(readBook.readLine()));
-				newBook.setCurrentPage(Integer.parseInt(readBook.readLine()));
-				if (readBook.readLine().equals("true")){
-					newBook.setRead(true);
-				}
-				else {
-					newBook.setRead(false);
-				}
-				String next = readBook.readLine();
-				if (next.equals("null")) {
-					newBook.setPreviousBook(null);
-				}
-				else {
-					newBook.setPreviousBook(new Book(source + "\\" + next + ".txt"));
-				}
-				next = readBook.readLine();
-				if (next.equals("null")) {
-					newBook.setNextBook(null);
-				}
-				else {
-					newBook.setNextBook(new Book(source + next + ".txt"));
-				}
-				newBook.setRating(Integer.parseInt(readBook.readLine()));
-				books.add(newBook);
+					newBook.setTitle(readBook.readLine());
+					newBook.setAuthor(readBook.readLine());
+					newBook.setSynopsis(readBook.readLine());
+					newBook.setPages(Integer.parseInt(readBook.readLine()));
+					newBook.setChapters(Integer.parseInt(readBook.readLine()));
+					newBook.setCurrentPage(Integer.parseInt(readBook.readLine()));
+					if (readBook.readLine().equals("true")){
+						newBook.setRead(true);
+					}
+					else {
+						newBook.setRead(false);
+					}
+					String next = readBook.readLine();
+					if (next.equals("null")) {
+						newBook.setPreviousBook(null);
+					}
+					else {
+						newBook.setPreviousBook(new Book(source + "\\" + next + ".txt"));
+					}
+					next = readBook.readLine();
+					if (next.equals("null")) {
+						newBook.setNextBook(null);
+					}
+					else {
+						newBook.setNextBook(new Book(source + next + ".txt"));
+					}
+					newBook.setRating(Integer.parseInt(readBook.readLine()));
+					books.add(newBook);
 				}
 				catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
 				System.out.println(newBook.toString());
-				 newFile = files.readLine();
-				 readBook.close();
+				newFile = files.readLine();
+				readBook.close();
 			}
 			files.close();
-			
+
 		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 
 	}
 	public void addBook(Book newBook) throws IOException{
@@ -100,14 +100,14 @@ public class BookLibraryCode extends LibraryCode{
 		builder += newBook.getChapters() + "\n";
 		builder += newBook.getCurrentPage() + "\n";
 		builder += newBook.isRead() + "\n";
-		if (newBook.getNextBook() != null) {
-		builder += newBook.getNextBook().getTitle() + "\n";
+		if (newBook.getPreviousBook() != null) {
+			builder += newBook.getPreviousBook().getTitle() + "\n";
 		}
 		else {
 			builder += "null\n";
 		}
-		if (newBook.getPreviousBook() != null) {
-		builder += newBook.getPreviousBook().getTitle() + "\n";
+		if (newBook.getNextBook() != null) {
+			builder += newBook.getNextBook().getTitle() + "\n";
 		}
 		else {
 			builder += "null\n";
@@ -116,9 +116,9 @@ public class BookLibraryCode extends LibraryCode{
 		writer.write(builder);
 		books.add(newBook);
 		writer.close();
-		
+
 		System.out.println("written book");
-		
+
 	}
 
 	public void searchViaGenre(String genre) {
@@ -139,7 +139,34 @@ public class BookLibraryCode extends LibraryCode{
 	public void FilterRead() {
 
 	}
+	/**
+	 * search for a specific book based on its title (useful to set the previous/next book in a series)
+	 * @param title
+	 * @return the searched book
+	 */
+	public Book getSpecificBook(String title) {
+		for (int i = 0; i <books.size(); i++) {
+			if (books.get(i).getTitle().equals(title)) {
+				return books.get(i);
+			}
+		}
+		return null;
+	}
 
 
+	/*order of read and write
+	 * 
+	 * title
+	 * author
+	 * synopsis
+	 * pages
+	 * chapters
+	 * current page
+	 * read
+	 * previous
+	 * next
+	 * rating
+	 * 
+	 */
 
 }
