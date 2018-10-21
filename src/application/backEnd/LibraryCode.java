@@ -5,10 +5,11 @@ package application.backEnd;
  * @author Tookie
  *
  */
-public class LibraryCode {
+public abstract class LibraryCode {
 	
 	
 	public LibraryCode() {
 		
 	}
+
 }
