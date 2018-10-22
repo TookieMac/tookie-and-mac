@@ -12,10 +12,12 @@ import application.items.books.Book;
 
 public class BookLibraryCode extends LibraryCode{
 	private ArrayList<Book> books;
+	private ArrayList<Book>filtered;
 	private String source;
 
 	public BookLibraryCode() {
 		source = "";
+		filtered = new ArrayList<Book>();
 		books = new ArrayList<Book>();
 		try {
 			LoadBooks("src\\books");
@@ -66,7 +68,15 @@ public class BookLibraryCode extends LibraryCode{
 						newBook.setNextBook(new Book(source + next + ".txt"));
 					}
 					newBook.setRating(Integer.parseInt(readBook.readLine()));
+					if (readBook.readLine().equals("{")) {
+						next = readBook.readLine();
+						while (!next.equals("}")) {
+							newBook.addGenre(next);
+							next = readBook.readLine();
+						}
+					}
 					books.add(newBook);
+					
 				}
 				catch (NumberFormatException e) {
 					e.printStackTrace();
@@ -113,6 +123,11 @@ public class BookLibraryCode extends LibraryCode{
 			builder += "null\n";
 		}
 		builder += newBook.getRating() + "\n";
+		builder += "{\n";
+		for (int i = 0; i <newBook.getGenres().size(); i++) {
+			builder += newBook.getGenres().get(i) + "\n";
+		}
+		builder += "}\n";
 		writer.write(builder);
 		books.add(newBook);
 		writer.close();
@@ -121,23 +136,58 @@ public class BookLibraryCode extends LibraryCode{
 
 	}
 
+	/**
+	 * search for a certain genre of books
+	 * @param genre - genre to search for
+	 */
 	public void searchViaGenre(String genre) {
-
+		filtered = new ArrayList<Book>();// clear the list first
+		for (int i = 0; i <books.size(); i++) {
+			if (books.get(i).getGenres().contains(genre)) {
+				filtered.add(books.get(i));
+			}
+		}
 	} 
+	/**
+	 * search for an author
+	 * @param author - authors name
+	 */
 	public void searchViaAuthor(String author) {
-
+		filtered = new ArrayList<Book>();
+		for (int i = 0; i <books.size(); i++) {
+			if (books.get(i).getAuthor() == author) {
+				filtered.add(books.get(i));
+			}
+		}
 	}
+	/**
+	 * search for a book based on title
+	 * @param title - title of the book(s) to search for
+	 */
 	public void searchViaTitle(String title) {
-
+		filtered = new ArrayList<Book>();
+		for (int i = 0; i <books.size(); i++) {
+			if (books.get(i).getTitle() == title) {
+				filtered.add(books.get(i));
+			}
+		}
 	}
 	public void SortAscending() {
-
+		//TODO 
 	}
 	public void sortDescending() {
-
+		//TODO
 	}
+	/**
+	 * gets all the read books
+	 */
 	public void FilterRead() {
-
+		filtered = new ArrayList<Book>();
+		for (int i = 0; i <books.size(); i++) {
+			if (books.get(i).isRead()) {
+				filtered.add(books.get(i));
+			}
+		}
 	}
 	/**
 	 * search for a specific book based on its title (useful to set the previous/next book in a series)
@@ -166,6 +216,9 @@ public class BookLibraryCode extends LibraryCode{
 	 * previous
 	 * next
 	 * rating
+	 * {
+	 * genres
+	 * }
 	 * 
 	 */
 

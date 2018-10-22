@@ -47,6 +47,11 @@ public class Book extends Item{
 		nextBook = null;
 	}
 	
+	/**
+	 * have no idea what i was thinking with this constructor<br>
+	 * (also the constructor is blank; does nothing at all)
+	 * @param book - i guess the title of the next/previous book?
+	 */
 	public Book(String book) {
 		
 	}
