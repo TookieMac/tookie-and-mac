@@ -4,18 +4,20 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>77</y>
-      <w>147</w>
-      <h>133</h>
+      <x>140</x>
+      <y>56</y>
+      <w>406</w>
+      <h>147</h>
     </coordinates>
-    <panel_attributes>Library
+    <panel_attributes>LibraryCode
 --
 &lt;&lt;Variables declared&gt;&gt;
-
+String[] filter
+double contentNumber
 --
 &lt;&lt;Variables initialised&gt;&gt;
-
+		filter = new String[] {"alphabetical ascending", "alphabetical descending", "author", "genre"};
+		contentNumber = 0;
 --
 &lt;&lt;Methods&gt;&gt;
 
@@ -27,31 +29,8 @@ represents a library</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>427</x>
-      <y>77</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>Shelf
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>420</x>
-      <y>245</y>
+      <x>791</x>
+      <y>518</y>
       <w>147</w>
       <h>133</h>
     </coordinates>
@@ -73,146 +52,8 @@ represents a library</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>735</x>
-      <y>245</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>SoloEntry
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>595</x>
-      <y>77</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>ShelvedItem
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>420</x>
-      <y>413</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>BookSeries
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>574</x>
-      <y>413</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>FilmSeries
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>266</x>
-      <y>413</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>EpisodicSeries
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>266</x>
-      <y>567</y>
-      <w>147</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>Season
---
-&lt;&lt;Variables declared&gt;&gt;
-
---
-&lt;&lt;Variables initialised&gt;&gt;
-
---
-&lt;&lt;Methods&gt;&gt;
-
---
-&lt;&lt;Description&gt;&gt;
-represents a library</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>735</x>
-      <y>413</y>
+      <x>602</x>
+      <y>322</y>
       <w>147</w>
       <h>133</h>
     </coordinates>
@@ -234,8 +75,8 @@ represents a library</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>889</x>
-      <y>413</y>
+      <x>784</x>
+      <y>322</y>
       <w>147</w>
       <h>133</h>
     </coordinates>
@@ -257,8 +98,8 @@ represents a library</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>721</y>
+      <x>973</x>
+      <y>518</y>
       <w>147</w>
       <h>133</h>
     </coordinates>
@@ -280,56 +121,283 @@ represents a library</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+      <x>182</x>
+      <y>196</y>
+      <w>189</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;90.0;250.0;90.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
       <x>329</x>
-      <y>371</y>
-      <w>175</w>
-      <h>56</h>
+      <y>301</y>
+      <w>238</w>
+      <h>238</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;30.0;230.0;30.0;230.0;10.0</additional_attributes>
+    <panel_attributes>BookLibraryCode
+--
+&lt;&lt;Variables declared&gt;&gt;
+ArryList&lt;Book&gt; books
+ArrayList&lt;Book&gt; filtered
+String source
+--
+&lt;&lt;Variables initialised&gt;&gt;
+source = ""
+filtered = new ArrayList&lt;Book&gt;()
+filtered = new ArrayList&lt;Book&gt;()
+--
+&lt;&lt;Methods&gt;&gt;
+void loadBooks(String source) throws IOException
+void AddBook(Book newBook) throws IOException
+void searchViaGenre(String genre)
+void SearchViaTitle(String title)
+void searchViaAuthor(String author)
+void FilterRead
+Book getSpecificBook(String title)
+--
+&lt;&lt;Description&gt;&gt;
+represents a library of books</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>301</y>
+      <w>238</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>FilmLibraryCode
+--
+&lt;&lt;Variables declared&gt;&gt;
+double duration
+double currentTime
+--
+&lt;&lt;Variables initialised&gt;&gt;
+duration = 0
+currentTime = 0
+--
+&lt;&lt;Methods&gt;&gt;
+--
+&lt;&lt;Description&gt;&gt;
+represents a library of films</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>371</y>
-      <w>182</w>
-      <h>56</h>
+      <x>350</x>
+      <y>196</y>
+      <w>112</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>240.0;60.0;240.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>140.0;150.0;140.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>483</x>
-      <y>371</y>
-      <w>21</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>483</x>
-      <y>203</y>
+      <x>623</x>
+      <y>56</y>
       <w>203</w>
-      <h>56</h>
+      <h>224</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;30.0;270.0;30.0;270.0;10.0</additional_attributes>
+    <panel_attributes>Item
+--
+&lt;&lt;Variables declared&gt;&gt;
+int rating
+String title
+String synopsis
+String series
+ArrayList&lt;String&gt; genres
+--
+&lt;&lt;Variables initialised&gt;&gt;
+rating = 0
+title = ""
+synopsis = ""
+series = ""
+genres = new ArrayList&lt;String()
+--
+&lt;&lt;Methods&gt;&gt;
+String toString
+accessors &amp; mutators
+--
+&lt;&lt;Description&gt;&gt;
+represents an item that can be in a library</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>273</y>
+      <w>84</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;40.0;100.0;40.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>721</x>
+      <y>273</y>
+      <w>154</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;70.0;200.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>448</y>
+      <w>21</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>448</y>
+      <w>133</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;170.0;30.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>854</x>
+      <y>448</y>
+      <w>210</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>280.0;100.0;280.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>854</x>
+      <y>448</y>
+      <w>21</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>518</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Movie
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1288</x>
+      <y>518</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>ShortFilm
+--
+&lt;&lt;Variables declared&gt;&gt;
+
+--
+&lt;&lt;Variables initialised&gt;&gt;
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Description&gt;&gt;
+represents a library</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>854</x>
+      <y>448</y>
+      <w>371</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>510.0;100.0;510.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>854</x>
+      <y>448</y>
+      <w>518</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>720.0;100.0;720.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>364</y>
+      <w>574</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;260.0;410.0;260.0;410.0;170.0;800.0;170.0;800.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
     <coordinates>
       <x>665</x>
-      <y>203</y>
-      <w>161</w>
-      <h>56</h>
+      <y>546</y>
+      <w>112</w>
+      <h>70</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>210.0;60.0;210.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+    <panel_attributes>in the case that series
+is used from within a 
+series, the newly added
+series would represent
+a new season</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>490</y>
+      <w>161</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;210.0;10.0</additional_attributes>
   </element>
 </diagram>
