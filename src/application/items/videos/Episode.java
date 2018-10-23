@@ -1,5 +1,5 @@
 package application.items.videos;
 
-public class Episode {
+public class Episode extends Film{
 
 }

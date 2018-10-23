@@ -13,10 +13,11 @@ import application.items.books.Book;
 public class BookLibraryCode extends LibraryCode{
 	private ArrayList<Book> books;
 	private ArrayList<Book>filtered;
-	private String source;
-
+	
+	/**
+	 * create a new book library at the default location
+	 */
 	public BookLibraryCode() {
-		source = "";
 		filtered = new ArrayList<Book>();
 		books = new ArrayList<Book>();
 		try {
@@ -27,9 +28,24 @@ public class BookLibraryCode extends LibraryCode{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * create a book library with its source location
+	 * @param source - desired location of the library
+	 */
+	public BookLibraryCode(String source) {
+		this.source = source;
+		filtered = new ArrayList<Book>();
+		books = new ArrayList<Book>();
+		try {
+			LoadBooks(source);
+			System.out.println("read all books");
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	private void LoadBooks(String source) throws IOException {
-		this.source = source;
 		File list = new File(source + "\\bookList.txt");
 		list.createNewFile();
 		//read the file that contains a list of books
@@ -76,7 +92,7 @@ public class BookLibraryCode extends LibraryCode{
 						}
 					}
 					books.add(newBook);
-					
+
 				}
 				catch (NumberFormatException e) {
 					e.printStackTrace();
@@ -201,6 +217,17 @@ public class BookLibraryCode extends LibraryCode{
 			}
 		}
 		return null;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+		try {
+			LoadBooks(source);
+			System.out.println("read all books");
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
