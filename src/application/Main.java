@@ -5,12 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-/**
- * a paired programming project for fun
- * @author Tookie
- * @author Maccastar
- * @version 0.01
- */
+
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
