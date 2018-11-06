@@ -1,0 +1,38 @@
+characters
+	Character
+		Player
+		Enemy
+			Goblin
+			WereWolf
+			Evil Wizard
+dungeons
+	Dungeon
+		BasicDungeon
+		MagicalDungeon
+		Room
+		Door
+			OpenDoorway
+		Wall
+			QuartzWall
+			MagicWall
+enchantments
+	Enchantment
+		Flaming
+		Electrified
+		OfHealing
+		OfVampirism
+items
+	Item
+		ConsumableItem
+			HealingPotion
+			AcidFlask
+			Teleporter
+		Weapon
+			Fists
+			ShortSword
+			BattleAxe
+			WizardsStaff
+			MagicWand
+other
+	Main - the main class the is run
+	CharacterManipulator
