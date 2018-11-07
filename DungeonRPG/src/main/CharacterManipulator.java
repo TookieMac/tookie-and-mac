@@ -30,6 +30,7 @@ public class CharacterManipulator {
 
 	private void applyPoints() {
 		boolean exit = false;
+		//TODO allow for use input here
 		while (lvlPoints > 0 && exit == false) {
 			System.out.println("you have " + lvlPoints + " remaining");
 			applyDex(1);
@@ -57,7 +58,7 @@ public class CharacterManipulator {
 	protected void setPrimaryWeapon(Weapon weapon) {
 		player.setPrimaryWeapon(weapon);
 	}
-	protected void setOffHand(Item offHand) {
+	protected void setOffHand(Weapon offHand) {
 		player.setOffHand(offHand);
 	}
 

@@ -1,11 +1,8 @@
 package dungeons;
 
-import characters.Player;
-
 public class MagicDungeon extends Dungeon{
 
-	public MagicDungeon(Player player) {
-		super(player);
+	public MagicDungeon() {		
 		// TODO Auto-generated constructor stub
 	}
 

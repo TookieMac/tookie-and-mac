@@ -1,5 +1,7 @@
 package items.weapons;
 
+import java.util.Random;
+
 import enchantments.Enchantment;
 import items.Item;
 
@@ -18,7 +20,8 @@ public abstract class Weapon extends Item{
 	
 	
 	public int getDamage() {
-		return maxDamage;
+		Random rand = new Random();
+		return rand.nextInt(maxDamage) + minDamage;
 	}
 
 

@@ -1,12 +1,15 @@
 package characters;
 
 import java.util.ArrayList;
-
-import items.Item;
-import items.weapons.Weapon;
+import java.util.Random;
+import items.*;
+import items.weapons.GodSet;
+import items.weapons.Weapon;;
 
 public abstract class Character {
 	protected int MAX_HP;
+	protected int lvl;
+	protected int ap;
 	protected int str;
 	protected int wis;
 	protected int dex;
@@ -14,7 +17,8 @@ public abstract class Character {
 	protected String name;
 	protected ArrayList<Item> inventory;
 	protected Weapon primaryWeapon;
-	protected Item offHand;
+	protected Weapon offHand;
+	protected Random rand = new Random();
 
 	/**
 	 * 
@@ -26,25 +30,57 @@ public abstract class Character {
 		this.str = str;
 		this.wis = wis;
 		this.dex = dex;
+		this.lvl = 1;
 		this.inventory = new ArrayList<Item>();
 		this.hp = 0;
 		this.name = "";
+		this.ap = 0;
 		this.MAX_HP = 0;
 		this.primaryWeapon = null;
 		this.offHand = null;
 	}
-
+	/**
+	 * attack the targeted character
+	 * @param target -the target character
+	 */
 	public void attack(Character target) {
-
+		int dodge = rand.nextInt(100);
+		if (target.getOffHand() instanceof GodSet) {
+			System.out.println("use of the god set makes you take no damage");
+		}
+		// if the hit lands
+		else if (dodge > target.dodgeChance()) {
+			target.setHp(target.getHp() - damage());
+		}
+		else {
+			System.out.println(target.getName() + " dodges the attack");
+		}
 	}
+	
 	protected int damage() {
-		return 2 * (str - 1);
+		// sometimes a character won't have a weapon
+		int damage = 0;
+		if (primaryWeapon != null && offHand != null) {
+		damage = 2 * (str - 1) +  (primaryWeapon.getDamage() + offHand.getDamage());
+		}
+		else if (primaryWeapon != null) {
+			damage = 2 * (str - 1) +  (primaryWeapon.getDamage());
+		}
+		else {
+			damage =  2 * (str - 1);
+		}
+		return damage;
 	}
+	
 	protected int dodgeChance() {
 		return 100 / 5 * (dex -1);
 	}
 
+	/**
+	 * display the details about the character
+	 */
 	public void displayDetails() {
+		System.out.println("type: " + getClass().getSimpleName());
 		System.out.println("name: " + name);
 		System.out.println("stats [str: " + str + ", wis:" + wis + ", dex: " + dex + "]" );
 		System.out.println("Health: " + hp + " (max " + MAX_HP +")");
@@ -104,7 +140,7 @@ public abstract class Character {
 	public Item getOffHand() {
 		return offHand;
 	}
-	public void setOffHand(Item offHand) {
+	public void setOffHand(Weapon offHand) {
 		this.offHand = offHand;
 	}
 
