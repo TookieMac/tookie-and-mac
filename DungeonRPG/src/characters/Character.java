@@ -6,7 +6,7 @@ import items.Item;
 import items.weapons.Weapon;
 
 public abstract class Character {
-	protected final int MAX_HP;
+	protected int MAX_HP;
 	protected int str;
 	protected int wis;
 	protected int dex;

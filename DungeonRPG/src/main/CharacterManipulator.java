@@ -13,7 +13,7 @@ public class CharacterManipulator {
 	 * @param name - characters name
 	 */
 	public CharacterManipulator(final String name) {
-		this.player = new Player(0, 0, 0);
+		this.player = new Player();
 		this.player.setName(name);
 		this.lvlPoints = player.getLvlPoints();
 		applyPoints();

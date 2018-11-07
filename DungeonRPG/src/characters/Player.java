@@ -10,11 +10,13 @@ public class Player extends Character{
 	 * @param wis - player wisdom
 	 * @param dex - player dexterity
 	 */
-	public Player(final int str, final int wis, final int dex) {
-		super (str, wis, dex);
+	public Player() {
+		super (1, 1, 1);
 		this.hp = 50;
+		this.MAX_HP = 50;
 		this.lvlPoints = 6;
 		this.primaryWeapon = new Fists();
+		offHand = null;
 	}
 	
 	public int getLvlPoints() {

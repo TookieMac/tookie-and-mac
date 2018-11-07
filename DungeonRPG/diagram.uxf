@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+// fontsize=14
+fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1800</x>
+      <y>120</y>
+      <w>160</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Dungeon
+Package::dungeon
+--
+&lt;&lt;Constructors&gt;&gt;
+Dungeon(Player player)
+--
+&lt;&lt;Variables&gt;&gt;
+Room currentRoom
+Player player
+
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>456</y>
+      <w>168</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>Door
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Door(string direction)
+Door(Room previous, string direction)
+--
+&lt;&lt;Variables&gt;&gt;
+string type        &lt;&lt;i&gt;&gt;
+int cRoom    &lt;&lt;i&gt;&gt;
+int nRoom
+--
+&lt;&lt;Methods&gt;&gt;
+enterRoom()
+--
+&lt;&lt;Out&gt;&gt;
+previous
+direction
+next</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1304</x>
+      <y>120</y>
+      <w>192</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>RoomBorder
+Package::objects
+--
+&lt;&lt;Constructors&gt;&gt;
+Obstacle()
+--
+&lt;&lt;Variables&gt;&gt;
+int cRoom
+--
+&lt;&lt;Methods&gt;&gt;
+int traverseRoom(int nextRoom = 0)
+--
+&lt;&lt;Out&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1912</x>
+      <y>0</y>
+      <w>200</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;i&gt;&gt; = inherited
+&lt;&lt;Out&gt;&gt; = main output / toString method</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>456</y>
+      <w>168</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Wall
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Wall(int direction)
+--
+&lt;&lt;Variables&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+int traverseRoom(0)
+--
+&lt;&lt;Out&gt;&gt;
+"there is a wall blocking your way"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>256</y>
+      <w>800</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;250.0;10.0;170.0;980.0;170.0;980.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>256</y>
+      <w>632</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;250.0;10.0;170.0;770.0;170.0;770.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1552</x>
+      <y>120</y>
+      <w>192</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Room
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Room()
+--
+&lt;&lt;Variables&gt;&gt;
+RoomBorder north
+RoomBorder south
+RoomBorder east
+RoomBorder west
+Item item
+Character enemy
+--
+&lt;&lt;Methods&gt;
+Room move (RoomBorder direction){}
+--
+&lt;&lt;Out&gt;&gt;
+enemy
+item
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>896</x>
+      <y>456</y>
+      <w>168</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>BasicDungeon
+Package::dungeon
+--
+&lt;&lt;Constructors&gt;&gt;
+BasicDungeon()
+--
+&lt;&lt;Variables&gt;&gt;
+int numRooms             &lt;&lt;i&gt;&gt;
+string type = "Basic"    &lt;&lt;i&gt;&gt;
+Room currentRoom     &lt;&lt;i&gt;&gt;
+Item[] itemList              &lt;&lt;i&gt;&gt;
+enemy[] enemyList      &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+Type
+numRooms
+enemyTypes
+items</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>288</y>
+      <w>928</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;140.0;1140.0;140.0;1140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>288</y>
+      <w>736</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;140.0;900.0;140.0;900.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>456</y>
+      <w>168</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>MagicDungeon
+Package::dungeon
+--
+&lt;&lt;Constructors&gt;&gt;
+MagicDungeon(Player player)
+--
+&lt;&lt;Variables&gt;&gt;
+int numRooms             &lt;&lt;i&gt;&gt;
+string type = "Magic"    &lt;&lt;i&gt;&gt;
+Room currentRoom     &lt;&lt;i&gt;&gt;
+Item[] itemList              &lt;&lt;i&gt;&gt;
+Enemy[] enemyList      &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+Type
+numRooms
+enemyTypes
+items</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1976</x>
+      <y>120</y>
+      <w>200</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Character
+Package::character
+--
+&lt;&lt;Constructors&gt;&gt;
+Character(int, int, int)
+--
+&lt;&lt;Variables&gt;&gt;
+string name
+int strength
+int wisdom
+int dexterity
+int health
+int MAX_HP
+Weapon primaryWeapon
+Item offHand
+--
+&lt;&lt;Methods&gt;&gt;
+dodgeChance(){100 / 5 * (dexterity - 1)}
+damage(){2 * (strength - 2)}
+attack (Chracter target){}
+displayDetails(){}
+--
+&lt;&lt;Out&gt;&gt;
+displayDetails(){}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>456</y>
+      <w>328</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>Goblin
+Package::character
+--
+&lt;&lt;Vonstructors&gt;&gt;
+Goblin()
+--
+&lt;&lt;Baraibles&gt;&gt;
+static name = "Goblin"  &lt;&lt;i&gt;&gt;
+static int strength = 2    &lt;&lt;i&gt;&gt;
+static int dexterity = 4    &lt;&lt;i&gt;&gt;
+static int wisdom = 1     &lt;&lt;i&gt;&gt;
+int HP = 20                    &lt;&lt;i&gt;&gt;
+Weapon weapon = ShortSword           &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+Descrpition()
+    {"A small nimble creature who favours the short sword"} &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Out&gt;&gt;
+name
+health
+strength, dexterity, wisdom
+damage, dodge
+weapon</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1928</x>
+      <y>456</y>
+      <w>392</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>WereWolf
+Package::character
+--
+&lt;&lt;Constructors&gt;&gt;
+WereWolf()
+--
+&lt;&lt;Varaibles&gt;&gt;
+static name = "WereWolf"  &lt;&lt;i&gt;&gt;
+static int strength = 5    &lt;&lt;i&gt;&gt;
+static int dexterity = 2    &lt;&lt;i&gt;&gt;
+static int wisdom = 1     &lt;&lt;i&gt;&gt;
+int HP = 30                    &lt;&lt;i&gt;&gt;
+Weapon weapon = none           &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+Descrpition()
+    {"Glowing red eyes peer out from behind a long nose and sharp teet"} &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Out&gt;&gt;
+name
+health
+strength, dexterity, wisdom
+damage, dodge
+weapon</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1272</x>
+      <y>456</y>
+      <w>296</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>EvilWizard
+Package::character
+--
+&lt;&lt;Constructors&gt;&gt;
+EvilWizard()
+--
+&lt;&lt;Varaibles&gt;&gt;
+static name = "Evil Wizard"  &lt;&lt;i&gt;&gt;
+static int strength = 1    &lt;&lt;i&gt;&gt;
+static int dexterity = 2    &lt;&lt;i&gt;&gt;
+static int wisdom = 5     &lt;&lt;i&gt;&gt;
+int HP = 20                    &lt;&lt;i&gt;&gt;
+Weapon weapon = WizardsStaff           &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+Descrpition()
+    {"Cackling over an old tome, this wizard seems 
+      insanely evil; or maybe just insane? it
+      is hard to tell "} &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Out&gt;&gt;
+name
+health
+strength, dexterity, wisdom
+damage, dodge
+weapon</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2128</x>
+      <y>416</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>416</y>
+      <w>488</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;590.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1424</x>
+      <y>416</y>
+      <w>824</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;1010.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2192</x>
+      <y>120</y>
+      <w>168</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>Item
+Package::items
+--
+&lt;&lt;Constructors&gt;&gt;
+Items()
+--
+&lt;&lt;Variables&gt;&gt;
+string name
+string longDescription
+string shortDescription
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2624</x>
+      <y>368</y>
+      <w>168</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Weapons
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+Weapons()
+--
+&lt;&lt;Variables&gt;&gt;
+int maxDamage
+int minDamage
+Enchantment ability
+Enchantment encahntment
+--
+&lt;&lt;Methods&gt;&gt;
+addEnchantment(Enchantment e)
+getDamage(){}
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2800</x>
+      <y>368</y>
+      <w>168</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Consumable
+Package::items.consumables
+--
+&lt;&lt;Constructors&gt;&gt;
+ConsumableItems()
+--
+&lt;&lt;Variables&gt;&gt;
+boolean used
+--
+&lt;&lt;Methods&gt;&gt;
+effect(){}
+--
+&lt;&lt;Out&gt;&gt;
+name
+description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2280</x>
+      <y>296</y>
+      <w>440</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>530.0;90.0;530.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2280</x>
+      <y>296</y>
+      <w>616</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>750.0;90.0;750.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2560</x>
+      <y>600</y>
+      <w>168</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;380.0;10.0;360.0;190.0;360.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2464</x>
+      <y>904</y>
+      <w>216</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Fists
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+Fists()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Fists"             &lt;&lt;i&gt;&gt;
+string description = 
+    "Fists are the weapon of choice for
+     someone who has nothing else."    &lt;&lt;i&gt;&gt;
+string shortDesc = 
+    "you look down at your fists and
+     shrug, "these will do""     &lt;&lt;i&gt;&gt;
+int maxDamage = 4                     &lt;&lt;i&gt;&gt;
+int minDamage = 4                      &lt;&lt;i&gt;&gt;
+ability = null           &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2704</x>
+      <y>600</y>
+      <w>192</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220.0;380.0;220.0;360.0;10.0;360.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2728</x>
+      <y>904</y>
+      <w>312</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>ShortSword
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+ShortSword()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Short Sword"  &lt;&lt;i&gt;&gt;
+string description =                 &lt;&lt;i&gt;&gt;
+   "Not very large, but with a sharp point. Short swords are 
+    designed more for stabbing than for slicing. The hilt is 
+    surprisingly ornate for such an inconspicuous weapon. "   
+string shortDesc =                 &lt;&lt;i&gt;&gt;
+    "a sharp and pointy instrument, good for stabbing "    
+int damage = 5-10                 &lt;&lt;i&gt;&gt;
+int maxRange                        &lt;&lt;i&gt;&gt;
+int minRange                         &lt;&lt;i&gt;&gt;
+string ability = "none"             &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+addEnchantment(Enchantment e) &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2320</x>
+      <y>1264</y>
+      <w>264</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>BattleAxe
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+BattleAxe()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Battle Axe"     &lt;&lt;i&gt;&gt;
+string description =                 &lt;&lt;i&gt;&gt;
+   "A large and heavy weapon. The battle axe must
+    be wielded with two hands but even then you are
+    almost as likely to cut off your own limbs as those
+    of an enemy"   
+string shortDesc =                 &lt;&lt;i&gt;&gt;
+    "heavy, but effective"    
+int damage = 10-15               &lt;&lt;i&gt;&gt;
+int maxRange                        &lt;&lt;i&gt;&gt;
+int minRange                         &lt;&lt;i&gt;&gt;
+string ability = "none"            &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+addEnchantment(Enchantment e) &lt;&lt;i&gt;&gt;
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2704</x>
+      <y>600</y>
+      <w>24</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;830.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2440</x>
+      <y>600</y>
+      <w>288</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;830.0;10.0;810.0;340.0;810.0;340.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2592</x>
+      <y>1264</y>
+      <w>264</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes>WizzardStaff
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+WizzardStaff()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Wizzards staff"&lt;&lt;i&gt;&gt;
+string description =                  &lt;&lt;i&gt;&gt;
+   "Not a very sturdy staff, but the swirl
+    of magical fire around its top belies a
+    magical secret: it shoots fireballs!"   
+string shortDesc =                 &lt;&lt;i&gt;&gt;
+    "it would break if you leant on it,
+     but it shoots fireballs so that’s something"    
+int damage = 1-2                   &lt;&lt;i&gt;&gt;
+int maxRange                        &lt;&lt;i&gt;&gt;
+int minRange                         &lt;&lt;i&gt;&gt;
+string ability =                        &lt;&lt;i&gt;&gt;
+    "FireBall: deals 10 - 20 damgage to opponent
+     (plus bonus from wisdom)"
+--
+&lt;&lt;Methods&gt;&gt;
+addEnchantment(Enchantment e) &lt;&lt;i&gt;&gt;
+FireBall()
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2864</x>
+      <y>1264</y>
+      <w>264</w>
+      <h>384</h>
+    </coordinates>
+    <panel_attributes>MagicWand
+Package::items.weapons
+--
+&lt;&lt;Constructors&gt;&gt;
+MagicWand()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Magic wand"&lt;&lt;i&gt;&gt;
+string description =                  &lt;&lt;i&gt;&gt;
+   "Apparently, there is no other
+    wand like this one in existence.
+    The angel’s feather at its core
+    allows the bearer to perform
+    unbelievable feats of healing"   
+string shortDesc =                 &lt;&lt;i&gt;&gt;
+    "birch with angel’s feather core
+     and rubberised leather grip "    
+int damage = 5-10                 &lt;&lt;i&gt;&gt;
+int maxRange                        &lt;&lt;i&gt;&gt;
+int minRange                         &lt;&lt;i&gt;&gt;
+string ability =                        &lt;&lt;i&gt;&gt;
+    "Healing: restore to full health"
+--
+&lt;&lt;Methods&gt;&gt;
+addEnchantment(Enchantment e) &lt;&lt;i&gt;&gt;
+Healing(){health +=25}
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+range (min -&gt; max)
+ability description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2704</x>
+      <y>600</y>
+      <w>312</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>370.0;830.0;370.0;810.0;10.0;810.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3064</x>
+      <y>688</y>
+      <w>216</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>HealthPotion
+Package::items.consumables
+--
+&lt;&lt;Constructors&gt;&gt;
+HealthPotion()
+--
+&lt;&lt;Variables&gt;&gt;
+string name  = "health Potion"  &lt;&lt;i&gt;&gt;
+string description =  &lt;&lt;i&gt;&gt;
+    "While it does not look appetising,
+     drinking this potion is the ultimate
+     boost to your immune system:
+     kale really is that good for you"
+string shortDesc =  &lt;&lt;i&gt;&gt;
+    "a cloudy green fluid in a glass vial "
+string Effect = "healing"
+boolean used = false
+--
+&lt;&lt;Methods&gt;&gt;
+Healing(){health +=25)
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+effect</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2872</x>
+      <y>528</y>
+      <w>320</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>380.0;200.0;380.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2872</x>
+      <y>528</y>
+      <w>560</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>680.0;200.0;680.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3304</x>
+      <y>688</y>
+      <w>216</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>AcidFlask
+Package::items.consumables
+--
+&lt;&lt;Constructors&gt;&gt;
+AcidFlask()
+--
+&lt;&lt;Variables&gt;&gt;
+string name  = "Acid Flask"  &lt;&lt;i&gt;&gt;
+string description =  &lt;&lt;i&gt;&gt;
+    "Spilling this potion could really hurt.
+     It is probably best if you keep the
+     stopper in at all times"
+string shortDesc =  &lt;&lt;i&gt;&gt;
+    "the label reads "danger:
+     corrosive substance!"
+string Effect = "deal 10 damge"
+boolean used = false
+--
+&lt;&lt;Methods&gt;&gt;
+damage(){targetHealth -=10)
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+effect</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2872</x>
+      <y>528</y>
+      <w>432</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>520.0;610.0;520.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3184</x>
+      <y>1016</y>
+      <w>232</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>Teleporter
+Package::items.consumables
+--
+&lt;&lt;Constructors&gt;&gt;
+Teleporter()
+--
+&lt;&lt;Variables&gt;&gt;
+string name  = "teleporter"  &lt;&lt;i&gt;&gt;
+string description =  &lt;&lt;i&gt;&gt;
+    "Inspecting the device closely reveals
+     nothing about its origin nor function.
+     But the big red button is very tempting…"
+string shortDesc =  &lt;&lt;i&gt;&gt;
+    "a small device with a big red button,
+     I wonder what it does "
+string Effect = "move to random room"
+boolean used = false
+--
+&lt;&lt;Methods&gt;&gt;
+move()
+--
+&lt;&lt;Out&gt;&gt;
+name
+description
+effect</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3096</x>
+      <y>144</y>
+      <w>168</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Enchantment
+Package::enchantments
+--
+&lt;&lt;Constructors&gt;&gt;
+Enchantment()
+--
+&lt;&lt;Variables&gt;&gt;
+string name
+string presuf
+string desc
+string effect
+Items[] applicable
+--
+&lt;&lt;Methods&gt;&gt;
+use(){}
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3000</x>
+      <y>368</y>
+      <w>168</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>Flames
+Package::enchantments
+--
+&lt;&lt;Constructors&gt;&gt;
+Flames()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Flaming"    &lt;&lt;i&gt;&gt;
+string presuf = "prefix"       &lt;&lt;i&gt;&gt;
+string desc =                      &lt;&lt;i&gt;&gt;
+    "Holding it feels warm to
+     the touch and sparks leap out
+     when it makes contact with
+     something."
+string effect =                    &lt;&lt;i&gt;&gt;
+    "deals 5 extra damage"
+Items[] applicable =           &lt;&lt;i&gt;&gt;
+    {ShortSword, BattleAxe,
+    WizardStaff, MagicWand}
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3072</x>
+      <y>336</y>
+      <w>128</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;20.0;140.0;20.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3176</x>
+      <y>368</y>
+      <w>168</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>Electric
+Package::enchantments
+--
+&lt;&lt;Constructors&gt;&gt;
+Electric()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "Flaming"    &lt;&lt;i&gt;&gt;
+string presuf = "prefix"       &lt;&lt;i&gt;&gt;
+string desc =                      &lt;&lt;i&gt;&gt;
+    "The air crackles around it
+     making the hairs on your arm
+     stand on end."
+string effect =                    &lt;&lt;i&gt;&gt;
+    "deals 5 extra damage"
+Items[] applicable =           &lt;&lt;i&gt;&gt;
+    {ShortSword, BattleAxe,
+    WizardStaff, MagicWand}
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3352</x>
+      <y>368</y>
+      <w>168</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>Healing
+Package::enchantments
+--
+&lt;&lt;Constructors&gt;&gt;
+Healing()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "of healing" &lt;&lt;i&gt;&gt;
+string presuf = "suffix"       &lt;&lt;i&gt;&gt;
+string desc =                      &lt;&lt;i&gt;&gt;
+    "Just being near it makes you
+     feel all warm and fuzzy
+     inside. "
+string effect =                    &lt;&lt;i&gt;&gt;
+    "heals owner 5 points"
+Items[] applicable =           &lt;&lt;i&gt;&gt;
+    {ShortSword, BattleAxe}
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3176</x>
+      <y>336</y>
+      <w>280</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>330.0;40.0;330.0;20.0;10.0;20.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3176</x>
+      <y>336</y>
+      <w>96</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;40.0;100.0;20.0;10.0;20.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3176</x>
+      <y>336</y>
+      <w>440</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>530.0;40.0;530.0;20.0;10.0;20.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3528</x>
+      <y>368</y>
+      <w>168</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>Vampirism
+Package::enchantments
+--
+&lt;&lt;Constructors&gt;&gt;
+Vampirism()
+--
+&lt;&lt;Variables&gt;&gt;
+string name = "of Vampirism" &lt;&lt;i&gt;&gt;
+string presuf = "suffix"       &lt;&lt;i&gt;&gt;
+string desc =                      &lt;&lt;i&gt;&gt;
+    "Occasionally drops of blood
+     appear on the surface but
+     you are unsure from whence
+     they came."
+string effect =                    &lt;&lt;i&gt;&gt;
+    "half dealt damge is is added
+     to owner as health"
+Items[] applicable =           &lt;&lt;i&gt;&gt;
+    {ShortSword, BattleAxe,
+     MagicWand}
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>752</y>
+      <w>216</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>QuartzWall
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Wall(int direction)
+--
+&lt;&lt;Variables&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+int traverseRoom(0)
+--
+&lt;&lt;Out&gt;&gt;
+"there is a quartz wall blocking your way"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>752</y>
+      <w>208</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>StoneWall
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Wall(int direction)
+--
+&lt;&lt;Variables&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+int traverseRoom(0)
+--
+&lt;&lt;Out&gt;&gt;
+"there is a stone wall blocking your way"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>984</x>
+      <y>752</y>
+      <w>256</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Wall
+Package::dungeon.parts
+--
+&lt;&lt;Constructors&gt;&gt;
+Wall(int direction)
+--
+&lt;&lt;Variables&gt;&gt;
+--
+&lt;&lt;Methods&gt;&gt;
+int traverseRoom(0)
+--
+&lt;&lt;Out&gt;&gt;
+"there is a magical looking wall blocking your way"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>616</y>
+      <w>520</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>630.0;170.0;630.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>616</y>
+      <w>48</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;170.0;40.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>616</y>
+      <w>272</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>320.0;170.0;320.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2064</x>
+      <y>392</y>
+      <w>424</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>510.0;80.0;510.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2336</x>
+      <y>456</y>
+      <w>280</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>Player
+Package::character
+--
+&lt;&lt;Constructors&gt;&gt;
+Player()
+--
+&lt;&lt;Varaibles&gt;&gt;
+int strength = 1        &lt;&lt;i&gt;&gt;
+int dexterity = 1       &lt;&lt;i&gt;&gt;
+int wisdom = 1         &lt;&lt;i&gt;&gt;
+int lvlPoints = 6
+int HP = 50                       &lt;&lt;i&gt;&gt;
+final MAX_HP = 50
+int damage
+int DodgeChance
+Weapon primaryWeapon = Fists    &lt;&lt;i&gt;&gt;
+Item offHand = null
+--
+&lt;&lt;Methods&gt;&gt;
+
+--
+&lt;&lt;Out&gt;&gt;
+name
+health
+strength, dexterity, wisdom
+damage, dodge
+weapon
+item</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2608</x>
+      <y>632</y>
+      <w>40</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30.0;340.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1736</x>
+      <y>192</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1488</x>
+      <y>192</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1488</x>
+      <y>192</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;60.0;80.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1488</x>
+      <y>192</y>
+      <w>80</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;40.0;80.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1488</x>
+      <y>192</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;30.0;80.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1520</x>
+      <y>88</y>
+      <w>760</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>930.0;40.0;930.0;10.0;10.0;10.0;10.0;210.0;40.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1960</x>
+      <y>88</y>
+      <w>320</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>380.0;40.0;380.0;10.0;10.0;10.0;10.0;250.0;20.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>208</y>
+      <w>720</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>880.0;310.0;880.0;250.0;10.0;250.0;10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1568</x>
+      <y>592</y>
+      <w>1304</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1610.0;390.0;1610.0;360.0;950.0;360.0;950.0;220.0;10.0;220.0;10.0;10.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1248</x>
+      <y>592</y>
+      <w>1456</w>
+      <h>688</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1800.0;840.0;1800.0;800.0;1340.0;800.0;1340.0;230.0;10.0;230.0;10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2168</x>
+      <y>272</y>
+      <w>528</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>640.0;120.0;640.0;80.0;20.0;80.0;20.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
