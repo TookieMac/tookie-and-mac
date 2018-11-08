@@ -1,7 +1,8 @@
 package main;
 
+import java.util.Scanner;
+
 import characters.Player;
-import items.Item;
 import items.weapons.Weapon;
 
 public class CharacterManipulator {
@@ -30,16 +31,41 @@ public class CharacterManipulator {
 
 	private void applyPoints() {
 		boolean exit = false;
-		//TODO allow for use input here
+		Scanner s = new Scanner(System.in);
+		int res = 0;
 		while (lvlPoints > 0 && exit == false) {
-			System.out.println("you have " + lvlPoints + " remaining");
-			applyDex(1);
-			System.out.println("you have " + lvlPoints + " remaining");
-			applyStr(1);
-			System.out.println("you have " + lvlPoints + " remaining");
-			applyWis(1);
+			System.out.println("you have " + lvlPoints + " level points remaining");
+			System.out.println("apply # to dexterity");
+			res = s.nextInt();
+			if (res <= lvlPoints) {
+				
+				applyDex(res);
+			}
+			else {
+				System.out.println("you do not have that many points remaining");
+			}
+			System.out.println("you have " + lvlPoints + " level points remaining");
+			System.out.println("apply # to strength");
+			res = s.nextInt();
+			if (res <= lvlPoints) {
+				applyStr(res);
+			}
+			else {
+				System.out.println("you do not have that many points remaining");
+			}
+			System.out.println("you have " + lvlPoints + " level points remaining");
+			System.out.println("apply # to wisdom");
+			res = s.nextInt();
+			if (res <= lvlPoints) {
+				applyWis(res);
+			}
+			else {
+				System.out.println("you do not have that many points remaining");
+			}
+
 		}
 		System.out.println("-------------------------------------------\n" + player.toString() + "\n-------------------------------------------");
+		s.close();
 	}
 
 	private void applyDex(int points) {

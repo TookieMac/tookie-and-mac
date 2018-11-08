@@ -5,7 +5,6 @@ import java.util.Scanner;
 import characters.Player;
 import characters.Character;// need to do this import as without Characters is ambiguous (anotuher type exists in the java.lang)
 import dungeons.*;
-import items.weapons.GodSet;
 
 /**
  * 
@@ -21,7 +20,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		player = new CharacterManipulator("tookie").getPlayer();
-		player.setOffHand(null);//makes player unable to lose health
+		player.setOffHand(null);
 		dungeon = new DungeonManipulator("tookie").getDungeon();
 		player.displayDetails();
 		String res = "";
@@ -46,8 +45,7 @@ public class Main {
 				System.out.println("view inventory");
 			}
 		}
-
-
+		s.close();
 	}
 
 	/**
