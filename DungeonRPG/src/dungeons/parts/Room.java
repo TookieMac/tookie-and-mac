@@ -9,7 +9,7 @@ public class Room {
 	private Item item;
 	private boolean start;
 	private boolean end;
-	//TODO replace directional rooms with room border (ie; doors and walls)
+
 	/**
 	 * create a new room with all directions being set
 	 * @param N - Room to the north
