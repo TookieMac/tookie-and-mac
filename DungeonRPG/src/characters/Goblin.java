@@ -13,7 +13,7 @@ public class Goblin extends Character{
 	
 	@Override
 	public int damage() {
-		return primaryWeapon.getDamage() + (5^str);
+		return primaryWeapon.getDamage() + 5;
 	}
 	
 	@Override

@@ -10,9 +10,6 @@ public class Player extends Character{
 	private Consumable item;
 	/**
 	 * create a new player
-	 * @param str - player strength
-	 * @param wis - player wisdom
-	 * @param dex - player dexterity
 	 */
 	public Player() {
 		super (1, 1, 1);
@@ -41,6 +38,21 @@ public class Player extends Character{
 				System.out.println(item.getName() + "equipped to item slot");
 			}
 		}
+	}
+	
+	protected int damage() {
+		// sometimes a character won't have a weapon
+		int damage = 0;
+		if (primaryWeapon != null && offHand != null) {
+		damage = 2 * (str - 1) +  (primaryWeapon.getDamage() + offHand.getDamage());
+		}
+		else if (primaryWeapon != null) {
+			damage = 2 * (str - 1) +  (primaryWeapon.getDamage());
+		}
+		else {
+			damage =  2 * (str - 1);
+		}
+		return damage;
 	}
 
 	public void UseItem() {

@@ -1,33 +1,42 @@
 package items.weapons;
 
-import java.util.Random;
-
 import enchantments.Enchantment;
 import items.Item;
 
 public abstract class Weapon extends Item{
 	protected int maxDamage;
 	protected int minDamage;
-	protected Enchantment ability;
 	protected Enchantment enchantment;
-	
+
 	public Weapon(){
 		maxDamage = 0;
 		minDamage = 0;
-		ability = null;
 		enchantment = null;
 	}
 	
-	
+	protected void Enchant(Enchantment enchantment) {
+		this.enchantment = enchantment;
+		if (enchantment.isSuffix()){
+			name += " " + enchantment.getName();
+		}
+		else {
+			name = enchantment.getName() + " " + name;
+		}
+	}
+
+
 	public int getDamage() {
-		Random rand = new Random();
-		return rand.nextInt(maxDamage) + minDamage;
+		return (int)Math.random() * maxDamage + minDamage + ability();
+	}
+	
+	public int ability() {
+		return 0;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Weapon [maxDamage=" + maxDamage + ", minDamage=" + minDamage + ", ability=" + ability.toString() + ", enchantment="
+		return "Weapon [maxDamage=" + maxDamage + ", minDamage=" + minDamage + ", enchantment="
 				+ enchantment.toString() + ", name=" + name + ", sDesc=" + sDesc + ", lDesc=" + lDesc + "]";
 	}
 }

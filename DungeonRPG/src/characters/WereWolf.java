@@ -16,27 +16,27 @@ public class WereWolf extends Character{
 	protected int damage(){
 		int att = rand.nextInt(60);
 		if (att <=10) {//all 3 attacks
-			return (rand.nextInt(7 + 3)) + (4^str) + (rand.nextInt(7)+3) + (4^str) + (rand.nextInt(10) + 5) + (4^str);
+			return (rand.nextInt(7 + 3)) + 4 + (rand.nextInt(7)+3) + 4 + (rand.nextInt(10) + 5) + 4;
 		}
 		else if (att <= 30) {
 			int attackOne = rand.nextInt(3);
 			int attackTwo = rand.nextInt(3);
 			if (attackOne == 1 || attackOne == 2) {
-				attackOne = (rand.nextInt(7)+3) + (4^str);
+				attackOne = (rand.nextInt(7)+3) + 4;
 			}
 			else if (attackOne == 3) {
-				attackOne = (rand.nextInt(10) + 5) + (4^str);
+				attackOne = (rand.nextInt(10) + 5) + 4;
 			}
 			if (attackTwo == 1 || attackTwo == 2) {
-				attackTwo = (rand.nextInt(7)+3) + (4^str);
+				attackTwo = (rand.nextInt(7)+3) + 4;
 			}
 			else if (attackTwo == 3) {
-				attackTwo = (rand.nextInt(10) + 5) + (4^str);
+				attackTwo = (rand.nextInt(10) + 5) + 4;
 			}
 			return attackOne + attackTwo;
 		}
 		else {
-			return (rand.nextInt(10) + 5) + (4^str);
+			return (rand.nextInt(10) + 5) + 4;
 		}		
 	}
 

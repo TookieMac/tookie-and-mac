@@ -1,13 +1,10 @@
 package main;
 
-import java.util.Random;
-
 import characters.*;
 import dungeons.*;
 import dungeons.parts.*;
 import items.weapons.*;
 import items.consumables.*;
-import items.*;
 
 public class DungeonManipulator {
 	private Dungeon dungeon;
@@ -89,6 +86,7 @@ public class DungeonManipulator {
 		dungeon.addRoom(room);
 		//1
 		room = new Room();
+		room.setStart(true);
 		room.setW(dungeon.getRooms().get(0));
 		dungeon.getRooms().get(0).setE(room);
 		dungeon.addRoom(room);
@@ -165,6 +163,8 @@ public class DungeonManipulator {
 		room.setW(dungeon.getRooms().get(10));
 		dungeon.getRooms().get(10).setE(room);
 		dungeon.addRoom(room);
+		
+		dungeon.setEnds(1, 11);
 	}
 
 	public Dungeon getDungeon() {

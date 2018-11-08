@@ -45,7 +45,7 @@ public abstract class Character {
 	 */
 	public void attack(Character target) {
 		int dodge = rand.nextInt(100);
-		if (target.getOffHand() instanceof GodSet) {
+		if (target.getOffHand() instanceof GodSet || target.getPrimaryWeapon() instanceof GodSet) {
 			System.out.println("use of the god set makes you take no damage");
 		}
 		// if the hit lands
@@ -58,18 +58,7 @@ public abstract class Character {
 	}
 	
 	protected int damage() {
-		// sometimes a character won't have a weapon
-		int damage = 0;
-		if (primaryWeapon != null && offHand != null) {
-		damage = 2 * (str - 1) +  (primaryWeapon.getDamage() + offHand.getDamage());
-		}
-		else if (primaryWeapon != null) {
-			damage = 2 * (str - 1) +  (primaryWeapon.getDamage());
-		}
-		else {
-			damage =  2 * (str - 1);
-		}
-		return damage;
+		return str;
 	}
 	
 	protected int dodgeChance() {
@@ -142,6 +131,9 @@ public abstract class Character {
 	}
 	public void setOffHand(Weapon offHand) {
 		this.offHand = offHand;
+	}
+	public int getMAX_HP() {
+		return MAX_HP;
 	}
 
 

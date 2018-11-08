@@ -5,6 +5,7 @@ import java.util.Scanner;
 import characters.Player;
 import characters.Character;// need to do this import as without Characters is ambiguous (anotuher type exists in the java.lang)
 import dungeons.*;
+import items.weapons.GodSet;
 
 /**
  * 
@@ -31,7 +32,7 @@ public class Main {
 			System.out.println("or (v)iew your inventory?");
 			res = s.nextLine();
 			if (res.equalsIgnoreCase("n") || res.equalsIgnoreCase("s") || res.equalsIgnoreCase("e") || res.equalsIgnoreCase("w")) {
-				dungeon.move(res);
+				playing = dungeon.move(res);
 				battle();
 				if (playing){//if not dead from the battle
 					pickup();
@@ -68,6 +69,9 @@ public class Main {
 				}
 				else if (res.equalsIgnoreCase("r")) {
 					coward = true;
+				}
+				else if (res.equalsIgnoreCase("u")) {
+					player.UseItem();
 				}
 				else {
 					System.out.println("invalid");
