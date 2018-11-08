@@ -31,12 +31,12 @@ public class CharacterManipulator {
 
 	private void applyPoints() {
 		boolean exit = false;
-		Scanner s = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		int res = 0;
 		while (lvlPoints > 0 && exit == false) {
 			System.out.println("you have " + lvlPoints + " level points remaining");
 			System.out.println("apply # to dexterity");
-			res = s.nextInt();
+			res = sc.nextInt();
 			if (res <= lvlPoints) {
 				
 				applyDex(res);
@@ -46,7 +46,7 @@ public class CharacterManipulator {
 			}
 			System.out.println("you have " + lvlPoints + " level points remaining");
 			System.out.println("apply # to strength");
-			res = s.nextInt();
+			res = sc.nextInt();
 			if (res <= lvlPoints) {
 				applyStr(res);
 			}
@@ -55,7 +55,7 @@ public class CharacterManipulator {
 			}
 			System.out.println("you have " + lvlPoints + " level points remaining");
 			System.out.println("apply # to wisdom");
-			res = s.nextInt();
+			res = sc.nextInt();
 			if (res <= lvlPoints) {
 				applyWis(res);
 			}
@@ -65,7 +65,6 @@ public class CharacterManipulator {
 
 		}
 		System.out.println("-------------------------------------------\n" + player.toString() + "\n-------------------------------------------");
-		s.close();
 	}
 
 	private void applyDex(int points) {

@@ -1,10 +1,9 @@
 package main;
 
 import java.util.Scanner;
-
 import characters.Player;
-import characters.Character;// need to do this import as without Characters is ambiguous (anotuher type exists in the java.lang)
-import dungeons.*;
+import characters.Character;
+import dungeons.Dungeon;
 
 /**
  * 
@@ -45,7 +44,7 @@ public class Main {
 				System.out.println("view inventory");
 			}
 		}
-		s.close();
+		
 	}
 
 	/**
