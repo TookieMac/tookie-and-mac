@@ -35,7 +35,7 @@ public class Player extends Character{
 		else if (item.getClass().getSuperclass().getSimpleName().equals("Consumable")) {
 			if (this.item == null) {
 				this.item = (Consumable) item;
-				System.out.println(item.getName() + "equipped to item slot");
+				System.out.println(item.getName() + " equipped to item slot");
 			}
 		}
 	}
@@ -63,6 +63,7 @@ public class Player extends Character{
 			}
 			System.out.println("your health is now: " + hp);
 		}
+		item = null;
 	}
 
 	public int getLvlPoints() {
@@ -70,6 +71,9 @@ public class Player extends Character{
 	}
 	public void setLvlPoints(int lvlPoints) {
 		this.lvlPoints = lvlPoints;
+	}
+	public Consumable getConsumable() {
+		return item;
 	}
 
 	@Override
