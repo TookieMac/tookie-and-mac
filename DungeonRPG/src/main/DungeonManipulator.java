@@ -62,17 +62,6 @@ public class DungeonManipulator {
 		
 	}
 	
-//	private void addToRoom() {
-//		Random rand = new Random();
-//		int res = rand.nextInt(2);
-//		
-//		if (res == 1) {
-//			//add enemy
-//		}
-//		else if (res == 2) {
-//			//add item
-//		}
-//	}
 	
 	/**
 	 * tookies dungeon

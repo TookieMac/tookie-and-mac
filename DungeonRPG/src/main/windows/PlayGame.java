@@ -2,6 +2,9 @@ package main.windows;
 
 
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import characters.Character;
 import characters.Player;
 import dungeons.Dungeon;
@@ -21,7 +24,7 @@ public class PlayGame {
 	private Scene scene;
 	private Scene preScene;
 	private BorderPane root;
-	private TextArea results;
+	static TextArea results;
 	private Button goBackScene;
 	private Button[] movement;
 	private Button[] battleAction;
@@ -36,10 +39,9 @@ public class PlayGame {
 	private Player player;
 	private Dungeon dungeon;
 	private Character enemy;
-	private boolean playing = true;
 	private Stage primaryStage;
 	private boolean coward = false;
-	public Thread t;
+	//public Thread t;
 
 	public PlayGame(final Stage primaryStage, final double width, final double height, final Player player) {
 		this.preScene = primaryStage.getScene();
@@ -57,6 +59,8 @@ public class PlayGame {
 		cent.addRow(0, moveCont);
 		cent.addRow(1, results);
 
+		PrintStream interceptor = new Interceptor(System.out);
+		System.setOut(interceptor);// just add the interceptor
 
 		results.setEditable(false);
 		root.setTop(top);
@@ -93,7 +97,6 @@ public class PlayGame {
 	}
 	private void compInit() {
 		root = new BorderPane();
-
 		cent = new GridPane();
 		bottom = new HBox(10);
 		top = new HBox(10);
@@ -115,20 +118,23 @@ public class PlayGame {
 	}
 
 	private void play() {
-		results.appendText(normalChoices() +"\n");
+		System.out.println(normalChoices());
 		enemy = dungeon.getCurrentRoom().getEnemy();
 		if (enemy != null) {
 			if (enemy.getHp() > 0 && player.getHp() >0 && !coward) {
-				results.appendText("you see an enemy " + enemy.getClass().getSimpleName() + " (name: " + enemy.getName() + ")\n");	
+				System.out.println("you see an enemy " + enemy.getClass().getSimpleName() + " (name: " + enemy.getName() + ")");	
 				battle();
 			}
 			else if (coward) {
-				results.appendText("you retreated from battle\n");
+				System.out.println("you retreated from battle");
 				dungeon.setCurrentRoom(dungeon.getPreviousRoom());
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
 				coward = false;
 			}
+		}
+		else if (dungeon.getCurrentRoom().getItem() != null) {
+			pickup();
 		}
 	}
 
@@ -139,27 +145,26 @@ public class PlayGame {
 
 	private void attack() {
 		//start with player attack
-		results.appendText(player.getName() + " attacks\n");
+		System.out.println(player.getName() + " attacks");
 		player.attack(enemy);
 
 		if (enemy.getHp() > 0 && player.getHp() > 0) {//if the enemy survives the attack he can attack back
-			results.appendText(enemy.getName() + " survives and retaliates (remaining HP: " + enemy.getHp() + ")\n");
+			System.out.println(enemy.getName() + " survives and retaliates (remaining HP: " + enemy.getHp() + ")");
 			if(enemy.attack(player)) {
-				results.appendText(enemy.getName() + " dodges the attack\n");
+				System.out.println(enemy.getName() + " dodges the attack");
 			}
-			results.appendText("your remaining HP: " + player.getHp() + "\n");
+			System.out.println("your remaining HP: " + player.getHp());
 		}
 		else {
 			if (player.getHp() > 0 && coward == false) {
-				results.appendText(player.getName() + " wins this battle\n");
-//				dungeon.getCurrentRoom().setEnemy(null);
+				System.out.println(player.getName() + " wins this battle\n");
+				//				dungeon.getCurrentRoom().setEnemy(null);
 				pickup();
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
 			}
 			else {
-				results.appendText("you lose\n");
-				playing = false;
+				System.out.println("you lose");
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
 				//TODO delete character from saves when dead (perma death)
@@ -168,7 +173,7 @@ public class PlayGame {
 	}
 	private void pickup() {
 		if (dungeon.getCurrentRoom().getItem() != null) {
-			results.appendText("you found a " + dungeon.getCurrentRoom().getItem().getName() + "\n");
+			System.out.println("you found a " + dungeon.getCurrentRoom().getItem().getName());
 			player.pickup(dungeon.getCurrentRoom().getItem());
 			dungeon.getCurrentRoom().setItem(null);
 		}
@@ -185,14 +190,13 @@ public class PlayGame {
 			public void handle(ActionEvent e) {
 				primaryStage.setScene(preScene);
 				primaryStage.setTitle("Dungeon RPG main Menu");
-				results.appendText("returning to menu.\n");
+				System.out.println("returning to menu.");
 			}
 		});
 		//move north
 		movement[0].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you moved north\n");
 				dungeon.move("N");
 				play();
 			}
@@ -201,7 +205,6 @@ public class PlayGame {
 		movement[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you moved south\n");
 				dungeon.move("S");
 				play();
 
@@ -211,7 +214,6 @@ public class PlayGame {
 		movement[2].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you moved east\n");
 				dungeon.move("E");
 				play();
 			}
@@ -220,7 +222,6 @@ public class PlayGame {
 		movement[3].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you moved west\n");
 				dungeon.move("W");
 				play();
 			}
@@ -230,33 +231,33 @@ public class PlayGame {
 			@Override 
 			public void handle(ActionEvent e) {
 				if (player.getConsumable() != null) {
-					results.appendText("you used " + player.getConsumable().getName() + "\n");
+					System.out.println("you used " + player.getConsumable().getName());
 					player.UseItem();
-					}
-					else {
-						results.appendText("you have no items equipped\n");
-					}
+				}
+				else {
+					System.out.println("you have no items equipped");
+				}
 			}
 		});
 		//view inventory
 		stdAction[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you used opened your inventory\n");
+				System.out.println("you used opened your inventory");
 			}
 		});
 		//view character
 		stdAction[2].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you viewed your character\n");
+				System.out.println("you viewed your character");
 			}
 		});
 		//attack enemy
 		battleAction[0].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you attacked " + enemy.getName() + "\n");
+				System.out.println("you attacked " + enemy.getName());
 				attack();
 			}
 		});
@@ -265,11 +266,11 @@ public class PlayGame {
 			@Override 
 			public void handle(ActionEvent e) {
 				if (player.getConsumable() != null) {
-				results.appendText("you used " + player.getConsumable().getName() + "\n");
-				player.UseItem();
+					System.out.println("you used " + player.getConsumable().getName());
+					player.UseItem();
 				}
 				else {
-					results.appendText("you have no items equipped\n");
+					System.out.println("you have no items equipped");
 				}
 			}
 		});
@@ -277,11 +278,32 @@ public class PlayGame {
 		battleAction[2].setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
-				results.appendText("you retreated from the battle\n");
+				System.out.println("you retreated from the battle");
 				coward = true;
 				play();
 			}
 		});
 	}
 
+}
+/**
+ * changes the print destination from the console to the label in the above class
+ * @author Tookie
+ *
+ */
+class Interceptor extends PrintStream
+{
+	public Interceptor(OutputStream out)
+	{
+		super(out, true);
+	}
+	@Override
+	public void print(String s)
+	{
+		PlayGame.results.appendText(s);
+	}
+	@Override
+	public void println(String s) {
+		PlayGame.results.appendText(s + "\n");
+	}
 }
