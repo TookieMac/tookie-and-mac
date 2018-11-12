@@ -17,6 +17,7 @@ public class MainMenu extends Stage{
 	private Button editor;
 	private HBox cent;
 	private PlayGame p;
+	private CharacterCreator cc;
 	
 	
 	
@@ -31,7 +32,8 @@ public class MainMenu extends Stage{
 		root.setCenter(cent);
 		cent.getChildren().addAll(playGame, loadProfile, editor);
 		setScene(scene);
-		Player pl = new Player();
+		cc = new CharacterCreator(this, scene.getWidth(), scene.getHeight());
+		Player pl = cc.getPlayer();
 		pl.setDex(6);
 		pl.setName("Tookie");
 		pl.setStr(6);
@@ -48,6 +50,13 @@ public class MainMenu extends Stage{
 				setScene (p.getScene());
 				setTitle("Dungeon RPG game");
 				//p.t.start();
+			}
+		});
+		loadProfile.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				setScene (cc.getScene());
+				setTitle("Dungeon RPG charactor load");
 			}
 		});
 	}

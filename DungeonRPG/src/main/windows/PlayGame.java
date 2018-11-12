@@ -300,7 +300,7 @@ class Interceptor extends PrintStream
 	@Override
 	public void print(String s)
 	{
-		PlayGame.results.appendText(s);
+		PlayGame.results.appendText(s);	
 	}
 	@Override
 	public void println(String s) {
