@@ -51,7 +51,6 @@ public class Main {
 	 * simulate a battle between the player and the rooms enemy
 	 */
 	public static void battle() {
-		//TODO add use item option
 		enemy = dungeon.getCurrentFloor().getCurrentRoom().getEnemy();
 		boolean coward = false;
 		String res = "";
