@@ -52,6 +52,7 @@ public class MainInteraction {
 				if (coward) {
 					System.out.println("you retreated from battle");
 					dungeon.getCurrentFloor().setCurrentRoom(dungeon.getCurrentFloor().getPreviousRoom());
+					coward = false;
 				}
 				else if (player.getHp() > 0) {
 					System.out.println(player.getName() + " wins this battle");
