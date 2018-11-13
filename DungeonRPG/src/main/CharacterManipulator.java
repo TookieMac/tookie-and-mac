@@ -18,11 +18,13 @@ public class CharacterManipulator {
 		this.player = new Player();
 		this.player.setName(name);
 		this.lvlPoints = player.getLvlPoints();
-		try {
-		applyPoints();
-		}
-		catch(InputMismatchException e) {
-			System.out.println("invalid input");
+		while (lvlPoints > 0) {
+			try {
+				applyPoints();
+			}
+			catch(InputMismatchException e) {
+				System.out.println("invalid input");
+			}
 		}
 	}
 	/**
@@ -44,7 +46,7 @@ public class CharacterManipulator {
 			System.out.println("apply # to dexterity");
 			res = sc.nextInt();
 			if (res <= lvlPoints) {
-				
+
 				applyDex(res);
 			}
 			else {
