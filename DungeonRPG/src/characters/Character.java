@@ -3,8 +3,7 @@ package characters;
 import java.util.ArrayList;
 import java.util.Random;
 import items.*;
-import items.weapons.GodSet;
-import items.weapons.Weapon;;
+import items.weapons.*;
 
 public abstract class Character {
 	protected int MAX_HP;
@@ -45,22 +44,41 @@ public abstract class Character {
 	 */
 	public void attack(Character target) {
 		int dodge = rand.nextInt(100);
-		if (target.getOffHand() instanceof GodSet || target.getPrimaryWeapon() instanceof GodSet) {
-			System.out.println("use of the god set makes you take no damage");
-		}
-		// if the hit lands
-		else if (dodge > target.dodgeChance()) {
-			target.setHp(target.getHp() - damage());
+		//if both characters have the godset, just act as if neither have it
+		if (target.hasGodset() && this.hasGodset()) {
+			if (dodge > target.dodgeChance()) {
+				target.setHp(target.getHp() - damage());
+			}
+			else {
+				System.out.println(target.getName() + " dodges the attack");
+			}
 		}
 		else {
-			System.out.println(target.getName() + " dodges the attack");
+			if (target.getOffHand() instanceof GodSet || target.getPrimaryWeapon() instanceof GodSet) {
+				System.out.println("use of the god set makes " + target.getName() + " take no damage");
+			}
+			// if the hit lands
+			else if (dodge > target.dodgeChance()) {
+				target.setHp(target.getHp() - damage());
+			}
+			else {
+				System.out.println(target.getName() + " dodges the attack");
+			}
 		}
 	}
-	
+	public String displayInventory() {
+		String res = "";
+		for (int item = 0; item < inventory.size(); item ++) {
+			res += inventory.get(item).getName() + "\n";
+		}
+		System.out.println(res);
+		return res;
+	}
+
 	protected int damage() {
 		return str;
 	}
-	
+
 	protected int dodgeChance() {
 		return 100 / 5 * (dex -1);
 	}
@@ -83,6 +101,16 @@ public abstract class Character {
 		}
 	}
 
+	/**
+	 * check if character has the godset equipped
+	 * @return
+	 */
+	private boolean hasGodset() {
+		if (this.primaryWeapon instanceof GodSet || this.offHand instanceof GodSet) {
+			return true;
+		}
+		return false;
+	}
 	//accesors and mutators
 	public int getStr() {
 		return str;
@@ -135,7 +163,4 @@ public abstract class Character {
 	public int getMAX_HP() {
 		return MAX_HP;
 	}
-
-
-
 }

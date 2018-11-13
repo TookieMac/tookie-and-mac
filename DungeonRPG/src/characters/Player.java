@@ -35,7 +35,7 @@ public class Player extends Character{
 		else if (item.getClass().getSuperclass().getSimpleName().equals("Consumable")) {
 			if (this.item == null) {
 				this.item = (Consumable) item;
-				System.out.println(item.getName() + "equipped to item slot");
+				System.out.println(item.getName() + " equipped to item slot");
 			}
 		}
 	}

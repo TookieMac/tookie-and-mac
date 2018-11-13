@@ -33,6 +33,7 @@ public abstract class Dungeon {
 			return false;
 		}
 	}
+	
 	/**
 	 * 
 	 * @param dir - the direction the player is moving
@@ -45,29 +46,29 @@ public abstract class Dungeon {
 		}
 		else if (dir.equalsIgnoreCase("N") && currentFloor.getCurrentRoom().getN() != null) {
 			System.out.println("you moved North");
-			currentFloor.setPreviousRoom(currentFloor.getPreviousRoom());
+			currentFloor.setPreviousRoom(currentFloor.getCurrentRoom());
 			currentFloor.setCurrentRoom(currentFloor.getCurrentRoom().getN());
 		}
 		else if (dir.equalsIgnoreCase("S") && currentFloor.getCurrentRoom().getS() != null) {
 			System.out.println("you moved South");
-			currentFloor.setPreviousRoom(currentFloor.getPreviousRoom());
+			currentFloor.setPreviousRoom(currentFloor.getCurrentRoom());
 			currentFloor.setCurrentRoom(currentFloor.getCurrentRoom().getS());
 		}
 		else if (dir.equalsIgnoreCase("E") && currentFloor.getCurrentRoom().getE() != null) {
 			System.out.println("you moved East");
-			currentFloor.setPreviousRoom(currentFloor.getPreviousRoom());
+			currentFloor.setPreviousRoom(currentFloor.getCurrentRoom());
 			currentFloor.setCurrentRoom(currentFloor.getCurrentRoom().getE());
 		}
 		else if (dir.equalsIgnoreCase("W") && currentFloor.getCurrentRoom().getW() != null) {
 			System.out.println("you moved West");
-			currentFloor.setPreviousRoom(currentFloor.getPreviousRoom());
+			currentFloor.setPreviousRoom(currentFloor.getCurrentRoom());
 			currentFloor.setCurrentRoom(currentFloor.getCurrentRoom().getW());
 		}
 		else {
 			System.out.println("a wall is blocking your way");
 		}
 		if (currentFloor.getCurrentRoom().isEnd()) {
-			if (!progressFloor()) {//if player hsa left the dungeon
+			if (!progressFloor()) {//if player has left the dungeon
 				return false;
 			}
 		}
