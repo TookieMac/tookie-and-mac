@@ -1,5 +1,6 @@
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import characters.Player;
@@ -17,7 +18,12 @@ public class CharacterManipulator {
 		this.player = new Player();
 		this.player.setName(name);
 		this.lvlPoints = player.getLvlPoints();
+		try {
 		applyPoints();
+		}
+		catch(InputMismatchException e) {
+			System.out.println("invalid input");
+		}
 	}
 	/**
 	 * edit the current player
@@ -29,7 +35,7 @@ public class CharacterManipulator {
 		applyPoints();
 	}
 
-	private void applyPoints() {
+	private void applyPoints() throws InputMismatchException{
 		boolean exit = false;
 		Scanner sc = new Scanner(System.in);
 		int res = 0;

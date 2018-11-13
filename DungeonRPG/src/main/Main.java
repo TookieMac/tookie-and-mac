@@ -52,7 +52,7 @@ public class Main {
 	 */
 	public static void battle() {
 		//TODO add use item option
-		enemy = dungeon.getCurrentRoom().getEnemy();
+		enemy = dungeon.getCurrentFloor().getCurrentRoom().getEnemy();
 		boolean coward = false;
 		String res = "";
 		if (enemy != null) {//make sure there is an enemy in the room
@@ -81,7 +81,7 @@ public class Main {
 			}
 			else if (coward) {
 				System.out.println("you retreated from battle");
-				dungeon.setCurrentRoom(dungeon.getPreviousRoom());
+				dungeon.getCurrentFloor().setCurrentRoom(dungeon.getCurrentFloor().getPreviousRoom());
 			}
 			else {
 				System.out.println("you lose");
@@ -104,9 +104,9 @@ public class Main {
 		}
 	}
 	private static void pickup() {
-		if (dungeon.getCurrentRoom().getItem() != null) {
-			System.out.println("you found a " + dungeon.getCurrentRoom().getItem().getName());
-			player.pickup(dungeon.getCurrentRoom().getItem());
+		if (dungeon.getCurrentFloor().getCurrentRoom().getItem() != null) {
+			System.out.println("you found a " + dungeon.getCurrentFloor().getCurrentRoom().getItem().getName());
+			player.pickup(dungeon.getCurrentFloor().getCurrentRoom().getItem());
 		}
 	}
 	//should there be a method to load previous characters (and therefore also save a character)?

@@ -8,13 +8,14 @@ import items.consumables.*;
 
 public class DungeonManipulator {
 	private Dungeon dungeon;
-
+	private Floor floor;
 	/**
 	 * manipulate and exisitng dungeon
 	 * @param dungeon - existing dungeon
 	 */
 	public DungeonManipulator(Dungeon dungeon) {
 		this.dungeon = dungeon;
+		floor = new Floor();
 	}
 	/**
 	 * create a new tungone of the given type
@@ -28,7 +29,7 @@ public class DungeonManipulator {
 			dungeon = new MagicDungeon();
 		}
 		else if (type == "tookie") {
-			createTookieDungeon();
+			createTookiesFloor();
 		}
 	}
 	/**
@@ -36,7 +37,7 @@ public class DungeonManipulator {
 	 * @param location - the name and location of the dungeon
 	 */
 	public void loadDungeon(String location) {
-
+		//TODO add dungeon loading
 	}
 	/**
 	 * save the dungeon
@@ -44,127 +45,124 @@ public class DungeonManipulator {
 	 * @param dungeon - dungeon to save
 	 */
 	public void saveDungeon(String location, Dungeon dungeon) {
-
+		//TODO add dungeon saving
 	}
 	/**
 	 * debug dungeon
 	 */
 	public DungeonManipulator() {
 		dungeon = new BasicDungeon();
-		dungeon.getCurrentRoom().setN(new Room(dungeon.getCurrentRoom(), 'N'));
-		dungeon.getCurrentRoom().setS(new Room(dungeon.getCurrentRoom(), 'S'));
-		dungeon.getCurrentRoom().setE(new Room(dungeon.getCurrentRoom(), 'E'));
-		dungeon.getCurrentRoom().setW(new Room(dungeon.getCurrentRoom(), 'W'));
-		
-		dungeon.getCurrentRoom().getE().setEnemy(new Goblin());
-		dungeon.getCurrentRoom().getS().setItem(new Teleporter());
-		
-		
+		floor = new Floor();
+		floor.getCurrentRoom().setN(new Room(floor.getCurrentRoom(), 'N'));
+		floor.getCurrentRoom().setS(new Room(floor.getCurrentRoom(), 'S'));
+		floor.getCurrentRoom().setE(new Room(floor.getCurrentRoom(), 'E'));
+		floor.getCurrentRoom().setW(new Room(floor.getCurrentRoom(), 'W'));
+
+		floor.getCurrentRoom().getE().setEnemy(new Goblin());
+		floor.getCurrentRoom().getS().setItem(new Teleporter());
+		dungeon.addFloor(floor);
+
 	}
-	
-//	private void addToRoom() {
-//		Random rand = new Random();
-//		int res = rand.nextInt(2);
-//		
-//		if (res == 1) {
-//			//add enemy
-//		}
-//		else if (res == 2) {
-//			//add item
-//		}
-//	}
-	
+
+
+
 	/**
-	 * tookies dungeon
+	 * the dev dungeon
 	 */
-	private void createTookieDungeon() {
+	private void createTookiesFloor() {
 		dungeon = new BasicDungeon();
 		Room room = new Room();
-		//0
-		room.setEnemy(new WereWolf());
-		room.setItem(null);
-		dungeon.addRoom(room);
-		//1
-		room = new Room();
-		room.setStart(true);
-		room.setW(dungeon.getRooms().get(0));
-		dungeon.getRooms().get(0).setE(room);
-		dungeon.addRoom(room);
-		dungeon.setCurrentRoom(dungeon.getRooms().get(1));
-		//2
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(new GodSet());
-		dungeon.addRoom(room);
-		//3
-		room = new Room();
-		room.setEnemy(new Goblin());
-		room.setItem(new BattleAxe());
-		dungeon.addRoom(room);
-		//4
-		room = new Room();
-		room.setEnemy(new Goblin());
-		room.setItem(new HealthPotion());
-		room.setW(dungeon.getRooms().get(3));
-		room.setN(dungeon.getRooms().get(1));
-		dungeon.getRooms().get(1).setS(room);
-		dungeon.getRooms().get(3).setE(room);
-		dungeon.addRoom(room);
-		//5
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(null);
-		room.setN(dungeon.getRooms().get(2));
-		room.setW(dungeon.getRooms().get(4));
-		dungeon.getRooms().get(4).setE(room);
-		dungeon.getRooms().get(2).setS(room);
-		dungeon.addRoom(room);
-		//6
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(new ShortSword());
-		room.setN(dungeon.getRooms().get(3));
-		dungeon.getRooms().get(3).setS(room);
-		dungeon.addRoom(room);
-		//7
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(null);
-		room.setW(dungeon.getRooms().get(6));
-		room.setN(dungeon.getRooms().get(4));
-		dungeon.getRooms().get(6).setE(room);
-		dungeon.getRooms().get(4).setS(room);
-		dungeon.addRoom(room);
-		//8
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(null);
-		room.setN(dungeon.getRooms().get(5));
-		dungeon.getRooms().get(5).setS(room);
-		dungeon.addRoom(room);
-		//9
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(null);
-		room.setN(dungeon.getRooms().get(6));
-		dungeon.getRooms().get(6).setS(room);
-		dungeon.addRoom(room);
-		//10
-		room = new Room();
-		room.setEnemy(new WereWolf());
-		room.setItem(new Teleporter());
-		room.setN(dungeon.getRooms().get(7));
-		dungeon.getRooms().get(7).setS(room);
-		dungeon.addRoom(room);
-		//11
-		room = new Room();
-		room.setEnemy(null);
-		room.setItem(null);
-		room.setW(dungeon.getRooms().get(10));
-		dungeon.getRooms().get(10).setE(room);
-		dungeon.addRoom(room);
-		
-		dungeon.setEnds(1, 11);
+		floor = new Floor();
+		{//create tookies floor
+			//0
+			room.setEnemy(new WereWolf());
+			room.setItem(null);
+			floor.addRoom(room);
+			//1
+			room = new Room();
+			room.setStart(true);
+			room.setW(floor.getRooms().get(0));
+			floor.getRooms().get(0).setE(room);
+			floor.addRoom(room);
+			floor.setCurrentRoom(floor.getRooms().get(1));
+			//2
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(new GodSet());
+			floor.addRoom(room);
+			//3
+			room = new Room();
+			room.setEnemy(new Goblin());
+			room.setItem(new BattleAxe());
+			floor.addRoom(room);
+			//4
+			room = new Room();
+			room.setEnemy(new Goblin());
+			room.setItem(new HealthPotion());
+			room.setW(floor.getRooms().get(3));
+			room.setN(floor.getRooms().get(1));
+			floor.getRooms().get(1).setS(room);
+			floor.getRooms().get(3).setE(room);
+			floor.addRoom(room);
+			//5
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(null);
+			room.setN(floor.getRooms().get(2));
+			room.setW(floor.getRooms().get(4));
+			floor.getRooms().get(4).setE(room);
+			floor.getRooms().get(2).setS(room);
+			floor.addRoom(room);
+			//6
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(new ShortSword());
+			room.setN(floor.getRooms().get(3));
+			floor.getRooms().get(3).setS(room);
+			floor.addRoom(room);
+			//7
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(null);
+			room.setW(floor.getRooms().get(6));
+			room.setN(floor.getRooms().get(4));
+			floor.getRooms().get(6).setE(room);
+			floor.getRooms().get(4).setS(room);
+			floor.addRoom(room);
+			//8
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(null);
+			room.setN(floor.getRooms().get(5));
+			floor.getRooms().get(5).setS(room);
+			floor.addRoom(room);
+			//9
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(null);
+			room.setN(floor.getRooms().get(6));
+			floor.getRooms().get(6).setS(room);
+			floor.addRoom(room);
+			//10
+			room = new Room();
+			room.setEnemy(new WereWolf());
+			room.setItem(new Teleporter());
+			room.setN(floor.getRooms().get(7));
+			floor.getRooms().get(7).setS(room);
+			floor.addRoom(room);
+			//11
+			room = new Room();
+			room.setEnemy(null);
+			room.setItem(null);
+			room.setW(floor.getRooms().get(10));
+			floor.getRooms().get(10).setE(room);
+			floor.addRoom(room);
+
+			floor.setEnds(1, 11);
+			floor.setEnd(true);//TODO move this line to the final floor of the dungeon when the rest are added
+			dungeon.addFloor(floor);
+			dungeon.setCurrentFloor(floor);
+		}
 	}
 
 	public Dungeon getDungeon() {
