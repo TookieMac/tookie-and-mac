@@ -21,6 +21,11 @@ public abstract class Dungeon {
 		try {
 			if (!currentFloor.isEnd()) {
 			currentFloor = floors.get(floors.indexOf(currentFloor)+1);
+			int index = 0;
+			while (!currentFloor.getRooms().get(index).isStart()) {//find the starting room
+				index ++;
+			}
+			currentFloor.setCurrentRoom(currentFloor.getRooms().get(index));
 			return true;
 			}
 			else {

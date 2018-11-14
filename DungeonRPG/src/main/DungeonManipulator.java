@@ -73,7 +73,7 @@ public class DungeonManipulator {
 		dungeon = new BasicDungeon();
 		Room room = new Room();
 		floor = new Floor();
-		{//create tookies floor
+		/*{//create tookies floor
 			//0
 			room.setEnemy(new WereWolf());
 			room.setItem(null);
@@ -159,9 +159,52 @@ public class DungeonManipulator {
 			floor.addRoom(room);
 
 			floor.setEnds(1, 11);
-			floor.setEnd(true);//TODO move this line to the final floor of the dungeon when the rest are added
 			dungeon.addFloor(floor);
 			dungeon.setCurrentFloor(floor);
+		}*/
+		//AJ dungeon #1
+		{
+			floor = new Floor();
+			for (int i = 0; i <8; i ++) {
+				floor.addRoom(new Room());
+			}
+			
+			//room 0
+			floor.getRooms().get(0).setEnemy(new WereWolf());
+			floor.getRooms().get(0).setItem(new GodSet());
+			floor.getRooms().get(0).setE(floor.getRooms().get(1));
+			//room 1
+			floor.getRooms().get(1).setStart(true);
+			floor.getRooms().get(1).setW(floor.getRooms().get(0));
+			floor.getRooms().get(1).setS(floor.getRooms().get(3));
+			//room 2
+			floor.getRooms().get(2).setE(floor.getRooms().get(3));
+			floor.getRooms().get(1).setS(floor.getRooms().get(4));
+			floor.getRooms().get(1).setEnemy(new EvilWizard());
+			//room 3
+			floor.getRooms().get(3).setEnemy(new Troll());
+			floor.getRooms().get(3).setItem(new HealthPotion());
+			floor.getRooms().get(3).setN(floor.getRooms().get(1));
+			floor.getRooms().get(3).setW(floor.getRooms().get(2));
+			floor.getRooms().get(3).setS(floor.getRooms().get(5));
+			//room 4
+			floor.getRooms().get(4).setN(floor.getRooms().get(2));
+			floor.getRooms().get(4).setEnemy(new WereWolf());
+			floor.getRooms().get(4).setItem(new Axe());
+			//floor 5
+			floor.getRooms().get(5).setN(floor.getRooms().get(3));
+			floor.getRooms().get(5).setS(floor.getRooms().get(6));
+			floor.getRooms().get(5).setEnemy(new WereWolf());
+			//room 6
+			floor.getRooms().get(6).setN(floor.getRooms().get(5));
+			floor.getRooms().get(6).setE(floor.getRooms().get(7));
+			floor.getRooms().get(6).setEnemy(new EvilWizard("bob"));
+			//room 7
+			floor.getRooms().get(7).setEnd(true);
+			floor.getRooms().get(7).setW(floor.getRooms().get(6));
+			
+			floor.setEnd(true);//TODO move this line to the final floor of the dungeon when the rest are added
+			dungeon.addFloor(floor);
 		}
 	}
 
