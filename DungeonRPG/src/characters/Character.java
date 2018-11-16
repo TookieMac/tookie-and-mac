@@ -20,7 +20,7 @@ public abstract class Character {
 	protected Random rand = new Random();
 
 	/**
-	 * 
+	 * create a new character with the given strenght, wisdom, and dexterity
 	 * @param str - characters strength
 	 * @param wis - characters wisdom
 	 * @param dex - characters dexterity
@@ -66,6 +66,10 @@ public abstract class Character {
 			}
 		}
 	}
+	/**
+	 * get a string representation of the characters inventory and print the inventory to the screen
+	 * @return - the string representation of the characters inventory
+	 */
 	public String displayInventory() {
 		String res = "";
 		for (int item = 0; item < inventory.size(); item ++) {

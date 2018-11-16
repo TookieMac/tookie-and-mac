@@ -39,12 +39,12 @@ public class Player extends Character{
 			}
 		}
 	}
-	
+
 	protected int damage() {
 		// sometimes a character won't have a weapon
 		int damage = 0;
 		if (primaryWeapon != null && offHand != null) {
-		damage = 2 * (str - 1) +  (primaryWeapon.getDamage() + offHand.getDamage());
+			damage = 2 * (str - 1) +  (primaryWeapon.getDamage() + offHand.getDamage());
 		}
 		else if (primaryWeapon != null) {
 			damage = 2 * (str - 1) +  (primaryWeapon.getDamage());
@@ -55,13 +55,19 @@ public class Player extends Character{
 		return damage;
 	}
 
-	public void UseItem() {
-		if (item.getClass().getSimpleName().equals("HealthPotion")) {
-			hp +=item.effect();
-			if (hp >= MAX_HP) {
-				hp = MAX_HP;
+	public void UseItem(){
+		try {
+			if (item.getClass().getSimpleName().equals("HealthPotion")) {
+				hp +=item.effect();
+				if (hp >= MAX_HP) {
+					hp = MAX_HP;//prevent health from exceeding max
+				}
+				System.out.println("your health is now: " + hp);
 			}
-			System.out.println("your health is now: " + hp);
+			item = null;//delete item after use
+		}
+		catch(NullPointerException e) {
+			System.out.println("you have no item equipped");
 		}
 	}
 

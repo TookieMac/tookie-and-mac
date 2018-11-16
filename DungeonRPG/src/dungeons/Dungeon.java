@@ -72,9 +72,14 @@ public abstract class Dungeon {
 		else {
 			System.out.println("a wall is blocking your way");
 		}
+		// check if if the player is progressing by a floor or has left
 		if (currentFloor.getCurrentRoom().isEnd()) {
 			if (!progressFloor()) {//if player has left the dungeon
 				return false;
+			}
+			else {
+				System.out.println("you have progressed to the next floor");
+				return true;
 			}
 		}
 		return true;
