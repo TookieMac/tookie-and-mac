@@ -3,8 +3,7 @@ package characters;
 import java.util.ArrayList;
 import java.util.Random;
 import items.*;
-import items.weapons.GodSet;
-import items.weapons.Weapon;;
+import items.weapons.*;
 
 public abstract class Character {
 	protected int MAX_HP;
@@ -21,7 +20,7 @@ public abstract class Character {
 	protected Random rand = new Random();
 
 	/**
-	 * 
+	 * create a new character with the given strenght, wisdom, and dexterity
 	 * @param str - characters strength
 	 * @param wis - characters wisdom
 	 * @param dex - characters dexterity
@@ -41,32 +40,57 @@ public abstract class Character {
 	}
 	/**
 	 * attack the targeted character
-	 * @param target -the target character
+	 * @param target -the targeted character
 	 * @return - true if the attack lands
 	 */
 	public boolean attack(Character target) {
 		int dodge = rand.nextInt(100);
-		if (target.getOffHand() instanceof GodSet || target.getPrimaryWeapon() instanceof GodSet) {
-			System.out.println("use of the god set makes you take no damage");
-			return false;
-		}
-		// if the hit lands
-		else if (dodge > target.dodgeChance()) {
-			target.setHp(target.getHp() - damage());
-			return true;
+		//if both characters have the godset, just act as if neither have it
+		if (target.hasGodset() && this.hasGodset()) {
+			if (dodge > target.dodgeChance()) {
+				target.setHp(target.getHp() - damage());
+				return true;
+			}
+			else {
+				System.out.println(target.getName() + " dodges the attack");
+				return false;
+			}
 		}
 		else {
-			System.out.println(target.getName() + " dodges the attack");
-			return false;
+			if (target.hasGodset()) {
+				System.out.println("use of the god set makes " + target.getName() + " take no damage");
+				return false;
+			}
+			// if the hit lands
+			else if (dodge > target.dodgeChance()) {
+				target.setHp(target.getHp() - damage());
+				return true;
+			}
+			else {
+				System.out.println(target.getName() + " dodges the attack");
+				return false;
+			}
 		}
 	}
-	
+	/**
+	 * get a string representation of the characters inventory and print the inventory to the screen
+	 * @return - the string representation of the characters inventory
+	 */
+	public String displayInventory() {
+		String res = "";
+		for (int item = 0; item < inventory.size(); item ++) {
+			res += inventory.get(item).getName() + "\n";
+		}
+		System.out.println(res);
+		return res;
+	}
+
 	protected int damage() {
 		return str;
 	}
-	
+
 	protected int dodgeChance() {
-		return (5 * (dex - 1));//removed the /100 from begginign as the the dodge chance would go over 100 at times when it was left in
+		return (5 * (dex - 1));//removed the (/100) from beggining as the the dodge chance would go over 100 at times when it was left in
 	}
 
 	/**
@@ -90,6 +114,16 @@ public abstract class Character {
 		return res;
 	}
 
+	/**
+	 * check if character has the godset equipped
+	 * @return - true if the character has the godset in either primary or secondary weapon slots
+	 */
+	private boolean hasGodset() {
+		if (this.primaryWeapon instanceof GodSet || this.offHand instanceof GodSet) {
+			return true;
+		}
+		return false;
+	}
 	//accesors and mutators
 	public int getStr() {
 		return str;
@@ -142,7 +176,4 @@ public abstract class Character {
 	public int getMAX_HP() {
 		return MAX_HP;
 	}
-
-
-
 }
