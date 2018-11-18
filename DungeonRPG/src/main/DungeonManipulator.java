@@ -63,9 +63,8 @@ public class DungeonManipulator {
 		dungeon.addFloor(floor);
 
 	}
-
-
-
+	
+	
 	/**
 	 * the dev dungeon
 	 */

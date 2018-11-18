@@ -1,38 +1,55 @@
 package main;
 
 import java.util.Scanner;
-import characters.Player;
+
 import characters.Character;
+import characters.Player;
 import dungeons.Dungeon;
 
-/**
- * 
- * @author tookie
- *
- */
-public class Main {
-	private static Player player;
-	private static Dungeon dungeon;
-	private static Character enemy;
-	private static Scanner s = new Scanner(System.in);
-	private static boolean playing = true;
+public class GameRun {
+	private Player player;
+	private Dungeon dungeon;
+	private Character enemy;
+	private Scanner s = new Scanner(System.in);
+	private boolean playing = true;
 
-	public static void main(String[] args) {
-		new MainInteraction().play();
-		GameRun game = new GameRun();
-		game.setPlayer(new CharacterManipulator("tookie").getPlayer());
-		game.setDungeon(new DungeonManipulator("tookie").getDungeon());
-		System.out.println(game.getPlayer().getDetails());
-		while (game.isPlaying()) {
-			game.play();
+	public GameRun() {
+
+	}
+	
+	public String normalChoices() {
+		String res = "";
+		res += "what will you do?\n";
+		res += "walk (n)orth, (s)outh, (e)ast, or (w)est?\n";
+		res += "(u)se an item\n";
+		res += "or (v)iew your inventory?\n";
+		return res;
+	}
+	
+	public void play() {
+		String res = "";
+		System.out.println(normalChoices());
+		res = s.nextLine();
+		if (res.equalsIgnoreCase("n") || res.equalsIgnoreCase("s") || res.equalsIgnoreCase("e") || res.equalsIgnoreCase("w")) {
+			playing = dungeon.move(res);
+			battle();
+			if (playing){//if not dead from the battle
+				pickup();
+			}
+		}
+		else if (res.equalsIgnoreCase("U")) {
+			System.out.println("use item");
+			player.UseItem();
+		}
+		else if (res.equalsIgnoreCase("V")) {
+			System.out.println("view inventory");
 		}
 	}
 
 	/**
 	 * simulate a battle between the player and the rooms enemy
 	 */
-	public static void battle() {
-		//TODO add use item option
+	public void battle() {
 		enemy = dungeon.getCurrentRoom().getEnemy();
 		boolean coward = false;
 		String res = "";
@@ -73,7 +90,7 @@ public class Main {
 
 
 	}
-	private static void attack() {
+	private void attack() {
 		//start with player attack
 		System.out.println(player.getName() + " attacks");
 		player.attack(enemy);
@@ -84,12 +101,23 @@ public class Main {
 			System.out.println("your remaining HP: " + player.getHp());
 		}
 	}
-	private static void pickup() {
+	private void pickup() {
 		if (dungeon.getCurrentRoom().getItem() != null) {
 			System.out.println("you found a " + dungeon.getCurrentRoom().getItem().getName());
 			player.pickup(dungeon.getCurrentRoom().getItem());
 		}
 	}
-	//should there be a method to load previous characters (and therefore also save a character)?
-
+	
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	public Player getPlayer() {
+		return player;
+	}
+	public void setDungeon(Dungeon dungeon) {
+		this.dungeon = dungeon;
+	}
+	public boolean isPlaying() {
+		return playing;
+	}
 }

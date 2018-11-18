@@ -41,8 +41,9 @@ public abstract class Character {
 	/**
 	 * attack the targeted character
 	 * @param target -the target character
+	 * @return - true if the attack lands
 	 */
-	public void attack(Character target) {
+	public boolean attack(Character target) {
 		int dodge = rand.nextInt(100);
 		//if both characters have the godset, just act as if neither have it
 		if (target.hasGodset() && this.hasGodset()) {
@@ -84,25 +85,28 @@ public abstract class Character {
 	}
 
 	protected int dodgeChance() {
-		return 100 / 5 * (dex -1);
+		return (5 * (dex - 1));//removed the /100 from begginign as the the dodge chance would go over 100 at times when it was left in
 	}
 
 	/**
 	 * display the details about the character
+	 * @return character details
 	 */
-	public void displayDetails() {
-		System.out.println("type: " + getClass().getSimpleName());
-		System.out.println("name: " + name);
-		System.out.println("stats [str: " + str + ", wis:" + wis + ", dex: " + dex + "]" );
-		System.out.println("Health: " + hp + " (max " + MAX_HP +")");
-		System.out.println("damage: " + damage());
-		System.out.println("dodge chance: " + dodgeChance());
+	public String getDetails() {
+		String res = "";
+		res += "type: " + getClass().getSimpleName() + "\n";
+		res += "name: " + name + "\n";
+		res += "stats [str: " + str + ", wis:" + wis + ", dex: " + dex + "]" + "\n";
+		res += "Health: " + hp + " (max " + MAX_HP +")\n";
+		res += "damage: " + damage() + "\n";
+		res += "dodge chance: " + dodgeChance() + "\n";
 		if (primaryWeapon != null) {
-			System.out.println("weapon: [" + primaryWeapon.getsDesc() + "]");
+			res += "weapon: [" + primaryWeapon.getsDesc() + "]\n";
 		}
 		if (offHand != null) {
-			System.out.println("item/off hand: [" + offHand.getsDesc() + "]");
+			res += "item/off hand: [" + offHand.getsDesc() + "]\n";
 		}
+		return res;
 	}
 
 	/**

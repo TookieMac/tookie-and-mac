@@ -69,6 +69,7 @@ public class Player extends Character{
 		catch(NullPointerException e) {
 			System.out.println("you have no item equipped");
 		}
+		item = null;
 	}
 
 	public int getLvlPoints() {
@@ -76,6 +77,9 @@ public class Player extends Character{
 	}
 	public void setLvlPoints(int lvlPoints) {
 		this.lvlPoints = lvlPoints;
+	}
+	public Consumable getConsumable() {
+		return item;
 	}
 
 	@Override
