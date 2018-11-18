@@ -40,7 +40,7 @@ public abstract class Character {
 	}
 	/**
 	 * attack the targeted character
-	 * @param target -the target character
+	 * @param target -the targeted character
 	 * @return - true if the attack lands
 	 */
 	public boolean attack(Character target) {
@@ -49,21 +49,26 @@ public abstract class Character {
 		if (target.hasGodset() && this.hasGodset()) {
 			if (dodge > target.dodgeChance()) {
 				target.setHp(target.getHp() - damage());
+				return true;
 			}
 			else {
 				System.out.println(target.getName() + " dodges the attack");
+				return false;
 			}
 		}
 		else {
-			if (target.getOffHand() instanceof GodSet || target.getPrimaryWeapon() instanceof GodSet) {
+			if (target.hasGodset()) {
 				System.out.println("use of the god set makes " + target.getName() + " take no damage");
+				return false;
 			}
 			// if the hit lands
 			else if (dodge > target.dodgeChance()) {
 				target.setHp(target.getHp() - damage());
+				return true;
 			}
 			else {
 				System.out.println(target.getName() + " dodges the attack");
+				return false;
 			}
 		}
 	}
@@ -85,7 +90,7 @@ public abstract class Character {
 	}
 
 	protected int dodgeChance() {
-		return (5 * (dex - 1));//removed the /100 from begginign as the the dodge chance would go over 100 at times when it was left in
+		return (5 * (dex - 1));//removed the (/100) from beggining as the the dodge chance would go over 100 at times when it was left in
 	}
 
 	/**
@@ -111,7 +116,7 @@ public abstract class Character {
 
 	/**
 	 * check if character has the godset equipped
-	 * @return
+	 * @return - true if the character has the godset in either primary or secondary weapon slots
 	 */
 	private boolean hasGodset() {
 		if (this.primaryWeapon instanceof GodSet || this.offHand instanceof GodSet) {
