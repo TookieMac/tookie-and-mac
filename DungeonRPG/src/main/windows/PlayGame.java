@@ -59,7 +59,7 @@ public class PlayGame {
 		cent.addRow(1, results);
 
 		PrintStream interceptor = new Interceptor(System.out);
-		System.setOut(interceptor);// just add the interceptor
+		System.setOut(interceptor);// just add the interceptor tio change output to the textArea
 
 		results.setEditable(false);
 		root.setTop(top);
@@ -68,7 +68,8 @@ public class PlayGame {
 		root.setLeft(standardCont);
 		root.setRight(battleCont);
 		actionSetup();
-		System.out.println(normalChoices());
+		battleCont.setVisible(false);
+		moveCont.setVisible(true);
 
 //		primaryStage.setOnCloseRequest( event -> {
 //			System.out.println("Closing Stage");//this is for intercepting the close application method (pressing the red 'x')
