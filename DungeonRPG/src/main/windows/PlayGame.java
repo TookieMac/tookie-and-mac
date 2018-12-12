@@ -41,7 +41,6 @@ public class PlayGame {
 	private Character enemy;
 	private Stage primaryStage;
 	private boolean coward = false;
-	//public Thread t;
 
 	public PlayGame(final Stage primaryStage, final double width, final double height, final Player player) {
 		this.preScene = primaryStage.getScene();
@@ -60,7 +59,7 @@ public class PlayGame {
 		cent.addRow(1, results);
 
 		PrintStream interceptor = new Interceptor(System.out);
-		System.setOut(interceptor);// just add the interceptor
+		System.setOut(interceptor);// just add the interceptor tio change output to the textArea
 
 		results.setEditable(false);
 		root.setTop(top);
@@ -69,10 +68,12 @@ public class PlayGame {
 		root.setLeft(standardCont);
 		root.setRight(battleCont);
 		actionSetup();
+		battleCont.setVisible(false);
+		moveCont.setVisible(true);
 
-		primaryStage.setOnCloseRequest( event -> {
-			System.out.println("Closing Stage");
-		});
+//		primaryStage.setOnCloseRequest( event -> {
+//			System.out.println("Closing Stage");//this is for intercepting the close application method (pressing the red 'x')
+//		});
 
 	}
 
@@ -113,13 +114,12 @@ public class PlayGame {
 	public String normalChoices() {
 		String res = "";
 		res += "what will you do?\n";
-
 		return res;
 	}
 
 	private void play() {
 		System.out.println(normalChoices());
-		enemy = dungeon.getCurrentRoom().getEnemy();
+		enemy = dungeon.getCurrentFloor().getCurrentRoom().getEnemy();
 		if (enemy != null) {
 			if (enemy.getHp() > 0 && player.getHp() >0 && !coward) {
 				System.out.println("you see an enemy " + enemy.getClass().getSimpleName() + " (name: " + enemy.getName() + ")");	
@@ -127,13 +127,13 @@ public class PlayGame {
 			}
 			else if (coward) {
 				System.out.println("you retreated from battle");
-				dungeon.setCurrentRoom(dungeon.getPreviousRoom());
+				dungeon.getCurrentFloor().setCurrentRoom(dungeon.getCurrentFloor().getPreviousRoom());
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
 				coward = false;
 			}
 		}
-		else if (dungeon.getCurrentRoom().getItem() != null) {
+		else if (dungeon.getCurrentFloor().getCurrentRoom().getItem() != null) {
 			pickup();
 		}
 	}
@@ -172,10 +172,10 @@ public class PlayGame {
 		}
 	}
 	private void pickup() {
-		if (dungeon.getCurrentRoom().getItem() != null) {
-			System.out.println("you found a " + dungeon.getCurrentRoom().getItem().getName());
-			player.pickup(dungeon.getCurrentRoom().getItem());
-			dungeon.getCurrentRoom().setItem(null);
+		if (dungeon.getCurrentFloor().getCurrentRoom().getItem() != null) {
+			System.out.println("you found a " + dungeon.getCurrentFloor().getCurrentRoom().getItem().getName());
+			player.pickup(dungeon.getCurrentFloor().getCurrentRoom().getItem());
+			dungeon.getCurrentFloor().getCurrentRoom().setItem(null);
 		}
 	}
 
@@ -190,7 +190,6 @@ public class PlayGame {
 			public void handle(ActionEvent e) {
 				primaryStage.setScene(preScene);
 				primaryStage.setTitle("Dungeon RPG main Menu");
-				System.out.println("returning to menu.");
 			}
 		});
 		//move north

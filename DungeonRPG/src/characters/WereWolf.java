@@ -10,7 +10,21 @@ public class WereWolf extends Character{
 		name = "Were wolf";
 		lvl = 1;
 		MAX_HP = 30;
+		init();
+	}
+	public WereWolf(String name) {
+		super(6,2,3);
+		this.name = name;
+		
+	}
+	
+	/**
+	 * initialise all common variables 
+	 */
+	private void init() {
 		hp = MAX_HP;
+		lvl = 1;
+		ap = 0;
 	}
 
 	protected int damage(){
