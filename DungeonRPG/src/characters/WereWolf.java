@@ -19,7 +19,7 @@ public class WereWolf extends Character{
 	}
 	
 	/**
-	 * initialise all common variables 
+	 * Initialize all common variables 
 	 */
 	private void init() {
 		hp = MAX_HP;

@@ -42,6 +42,13 @@ public class PlayGame {
 	private Stage primaryStage;
 	private boolean coward = false;
 
+	/**
+	 * create a new game
+	 * @param primaryStage - the stage the game is to be played on
+	 * @param width - width of the screen
+	 * @param height - height of the screen
+	 * @param player - the player
+	 */
 	public PlayGame(final Stage primaryStage, final double width, final double height, final Player player) {
 		this.preScene = primaryStage.getScene();
 		this.player = player;
@@ -59,7 +66,7 @@ public class PlayGame {
 		cent.addRow(1, results);
 
 		PrintStream interceptor = new Interceptor(System.out);
-		System.setOut(interceptor);// just add the interceptor tio change output to the textArea
+		System.setOut(interceptor);// just add the interceptor to change output to the textArea
 
 		results.setEditable(false);
 		root.setTop(top);
@@ -158,7 +165,6 @@ public class PlayGame {
 		else {
 			if (player.getHp() > 0 && coward == false) {
 				System.out.println(player.getName() + " wins this battle\n");
-				//				dungeon.getCurrentRoom().setEnemy(null);
 				pickup();
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
@@ -168,6 +174,8 @@ public class PlayGame {
 				battleCont.setVisible(false);
 				moveCont.setVisible(true);
 				//TODO delete character from saves when dead (perma death)
+				player = null;
+				primaryStage.setScene(preScene);
 			}
 		}
 	}

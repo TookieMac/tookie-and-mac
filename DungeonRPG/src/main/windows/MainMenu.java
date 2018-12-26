@@ -61,11 +61,9 @@ public class MainMenu extends Stage{
 		});
 	}
 	
-	
+}
 	/*TODO
 	load profile
 	create dungeon
 	play game
 	*/
-
-}
